@@ -1,0 +1,691 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D3CB8FFE2A7124AE0047BE0E /* WellConnectLiveApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB8FFD2A7124AE0047BE0E /* WellConnectLiveApp.swift */; };
+		D3CB90002A7124AE0047BE0E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB8FFF2A7124AE0047BE0E /* ContentView.swift */; };
+		D3CB90022A7124AE0047BE0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3CB90012A7124AE0047BE0E /* Assets.xcassets */; };
+		D3CB90052A7124AE0047BE0E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3CB90042A7124AE0047BE0E /* Preview Assets.xcassets */; };
+		D3CB90072A7124AE0047BE0E /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB90062A7124AE0047BE0E /* Persistence.swift */; };
+		D3CB900A2A7124AE0047BE0E /* WellConnectLive.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D3CB90082A7124AE0047BE0E /* WellConnectLive.xcdatamodeld */; };
+		D3CB90142A7124AF0047BE0E /* WellConnectLiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB90132A7124AF0047BE0E /* WellConnectLiveTests.swift */; };
+		D3CB901E2A7124AF0047BE0E /* WellConnectLiveUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB901D2A7124AF0047BE0E /* WellConnectLiveUITests.swift */; };
+		D3CB90202A7124AF0047BE0E /* WellConnectLiveUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB901F2A7124AF0047BE0E /* WellConnectLiveUITestsLaunchTests.swift */; };
+		D3CB902E2A7125010047BE0E /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB902D2A7125010047BE0E /* LoginViewModel.swift */; };
+		D3CB902F2A7125010047BE0E /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB902D2A7125010047BE0E /* LoginViewModel.swift */; };
+		D3CB90302A7125010047BE0E /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB902D2A7125010047BE0E /* LoginViewModel.swift */; };
+		D3CB90322A71251F0047BE0E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB90312A71251F0047BE0E /* LoginView.swift */; };
+		D3CB90332A71251F0047BE0E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB90312A71251F0047BE0E /* LoginView.swift */; };
+		D3CB90342A71251F0047BE0E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB90312A71251F0047BE0E /* LoginView.swift */; };
+		D3CB90372A7125400047BE0E /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB90362A7125400047BE0E /* RegistrationView.swift */; };
+		D3CB90382A7125400047BE0E /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB90362A7125400047BE0E /* RegistrationView.swift */; };
+		D3CB90392A7125400047BE0E /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB90362A7125400047BE0E /* RegistrationView.swift */; };
+		D3CB903B2A71255F0047BE0E /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB903A2A71255F0047BE0E /* RegistrationViewModel.swift */; };
+		D3CB903C2A71255F0047BE0E /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB903A2A71255F0047BE0E /* RegistrationViewModel.swift */; };
+		D3CB903D2A71255F0047BE0E /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB903A2A71255F0047BE0E /* RegistrationViewModel.swift */; };
+		D3CB90402A7125920047BE0E /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB903F2A7125920047BE0E /* AppState.swift */; };
+		D3CB90412A7125920047BE0E /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB903F2A7125920047BE0E /* AppState.swift */; };
+		D3CB90422A7125920047BE0E /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB903F2A7125920047BE0E /* AppState.swift */; };
+		D3CB90442A7125A40047BE0E /* MainStateNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB90432A7125A40047BE0E /* MainStateNavigation.swift */; };
+		D3CB90452A7125A40047BE0E /* MainStateNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB90432A7125A40047BE0E /* MainStateNavigation.swift */; };
+		D3CB90462A7125A40047BE0E /* MainStateNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB90432A7125A40047BE0E /* MainStateNavigation.swift */; };
+		D3CB90492A7125C80047BE0E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB90482A7125C80047BE0E /* UserModel.swift */; };
+		D3CB904A2A7125C80047BE0E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB90482A7125C80047BE0E /* UserModel.swift */; };
+		D3CB904B2A7125C80047BE0E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB90482A7125C80047BE0E /* UserModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D3CB90102A7124AF0047BE0E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D3CB8FF22A7124AE0047BE0E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D3CB8FF92A7124AE0047BE0E;
+			remoteInfo = WellConnectLive;
+		};
+		D3CB901A2A7124AF0047BE0E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D3CB8FF22A7124AE0047BE0E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D3CB8FF92A7124AE0047BE0E;
+			remoteInfo = WellConnectLive;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D3CB8FFA2A7124AE0047BE0E /* WellConnectLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WellConnectLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3CB8FFD2A7124AE0047BE0E /* WellConnectLiveApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellConnectLiveApp.swift; sourceTree = "<group>"; };
+		D3CB8FFF2A7124AE0047BE0E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D3CB90012A7124AE0047BE0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D3CB90042A7124AE0047BE0E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D3CB90062A7124AE0047BE0E /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		D3CB90092A7124AE0047BE0E /* WellConnectLive.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WellConnectLive.xcdatamodel; sourceTree = "<group>"; };
+		D3CB900F2A7124AF0047BE0E /* WellConnectLiveTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WellConnectLiveTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3CB90132A7124AF0047BE0E /* WellConnectLiveTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellConnectLiveTests.swift; sourceTree = "<group>"; };
+		D3CB90192A7124AF0047BE0E /* WellConnectLiveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WellConnectLiveUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3CB901D2A7124AF0047BE0E /* WellConnectLiveUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellConnectLiveUITests.swift; sourceTree = "<group>"; };
+		D3CB901F2A7124AF0047BE0E /* WellConnectLiveUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellConnectLiveUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		D3CB902D2A7125010047BE0E /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		D3CB90312A71251F0047BE0E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		D3CB90362A7125400047BE0E /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		D3CB903A2A71255F0047BE0E /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		D3CB903F2A7125920047BE0E /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		D3CB90432A7125A40047BE0E /* MainStateNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStateNavigation.swift; sourceTree = "<group>"; };
+		D3CB90482A7125C80047BE0E /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D3CB8FF72A7124AE0047BE0E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3CB900C2A7124AF0047BE0E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3CB90162A7124AF0047BE0E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D3CB8FF12A7124AE0047BE0E = {
+			isa = PBXGroup;
+			children = (
+				D3CB8FFC2A7124AE0047BE0E /* WellConnectLive */,
+				D3CB90122A7124AF0047BE0E /* WellConnectLiveTests */,
+				D3CB901C2A7124AF0047BE0E /* WellConnectLiveUITests */,
+				D3CB8FFB2A7124AE0047BE0E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D3CB8FFB2A7124AE0047BE0E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D3CB8FFA2A7124AE0047BE0E /* WellConnectLive.app */,
+				D3CB900F2A7124AF0047BE0E /* WellConnectLiveTests.xctest */,
+				D3CB90192A7124AF0047BE0E /* WellConnectLiveUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D3CB8FFC2A7124AE0047BE0E /* WellConnectLive */ = {
+			isa = PBXGroup;
+			children = (
+				D3CB90472A7125B90047BE0E /* UserModel */,
+				D3CB903E2A7125710047BE0E /* AppState */,
+				D3CB90352A71252D0047BE0E /* Registration */,
+				D3CB902C2A7124D80047BE0E /* Login */,
+				D3CB8FFD2A7124AE0047BE0E /* WellConnectLiveApp.swift */,
+				D3CB8FFF2A7124AE0047BE0E /* ContentView.swift */,
+				D3CB90012A7124AE0047BE0E /* Assets.xcassets */,
+				D3CB90062A7124AE0047BE0E /* Persistence.swift */,
+				D3CB90082A7124AE0047BE0E /* WellConnectLive.xcdatamodeld */,
+				D3CB90032A7124AE0047BE0E /* Preview Content */,
+			);
+			path = WellConnectLive;
+			sourceTree = "<group>";
+		};
+		D3CB90032A7124AE0047BE0E /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				D3CB90042A7124AE0047BE0E /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D3CB90122A7124AF0047BE0E /* WellConnectLiveTests */ = {
+			isa = PBXGroup;
+			children = (
+				D3CB90132A7124AF0047BE0E /* WellConnectLiveTests.swift */,
+			);
+			path = WellConnectLiveTests;
+			sourceTree = "<group>";
+		};
+		D3CB901C2A7124AF0047BE0E /* WellConnectLiveUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D3CB901D2A7124AF0047BE0E /* WellConnectLiveUITests.swift */,
+				D3CB901F2A7124AF0047BE0E /* WellConnectLiveUITestsLaunchTests.swift */,
+			);
+			path = WellConnectLiveUITests;
+			sourceTree = "<group>";
+		};
+		D3CB902C2A7124D80047BE0E /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D3CB902D2A7125010047BE0E /* LoginViewModel.swift */,
+				D3CB90312A71251F0047BE0E /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		D3CB90352A71252D0047BE0E /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				D3CB90362A7125400047BE0E /* RegistrationView.swift */,
+				D3CB903A2A71255F0047BE0E /* RegistrationViewModel.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		D3CB903E2A7125710047BE0E /* AppState */ = {
+			isa = PBXGroup;
+			children = (
+				D3CB903F2A7125920047BE0E /* AppState.swift */,
+				D3CB90432A7125A40047BE0E /* MainStateNavigation.swift */,
+			);
+			path = AppState;
+			sourceTree = "<group>";
+		};
+		D3CB90472A7125B90047BE0E /* UserModel */ = {
+			isa = PBXGroup;
+			children = (
+				D3CB90482A7125C80047BE0E /* UserModel.swift */,
+			);
+			path = UserModel;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D3CB8FF92A7124AE0047BE0E /* WellConnectLive */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D3CB90232A7124AF0047BE0E /* Build configuration list for PBXNativeTarget "WellConnectLive" */;
+			buildPhases = (
+				D3CB8FF62A7124AE0047BE0E /* Sources */,
+				D3CB8FF72A7124AE0047BE0E /* Frameworks */,
+				D3CB8FF82A7124AE0047BE0E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WellConnectLive;
+			productName = WellConnectLive;
+			productReference = D3CB8FFA2A7124AE0047BE0E /* WellConnectLive.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D3CB900E2A7124AF0047BE0E /* WellConnectLiveTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D3CB90262A7124AF0047BE0E /* Build configuration list for PBXNativeTarget "WellConnectLiveTests" */;
+			buildPhases = (
+				D3CB900B2A7124AF0047BE0E /* Sources */,
+				D3CB900C2A7124AF0047BE0E /* Frameworks */,
+				D3CB900D2A7124AF0047BE0E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D3CB90112A7124AF0047BE0E /* PBXTargetDependency */,
+			);
+			name = WellConnectLiveTests;
+			productName = WellConnectLiveTests;
+			productReference = D3CB900F2A7124AF0047BE0E /* WellConnectLiveTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D3CB90182A7124AF0047BE0E /* WellConnectLiveUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D3CB90292A7124AF0047BE0E /* Build configuration list for PBXNativeTarget "WellConnectLiveUITests" */;
+			buildPhases = (
+				D3CB90152A7124AF0047BE0E /* Sources */,
+				D3CB90162A7124AF0047BE0E /* Frameworks */,
+				D3CB90172A7124AF0047BE0E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D3CB901B2A7124AF0047BE0E /* PBXTargetDependency */,
+			);
+			name = WellConnectLiveUITests;
+			productName = WellConnectLiveUITests;
+			productReference = D3CB90192A7124AF0047BE0E /* WellConnectLiveUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D3CB8FF22A7124AE0047BE0E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					D3CB8FF92A7124AE0047BE0E = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					D3CB900E2A7124AF0047BE0E = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = D3CB8FF92A7124AE0047BE0E;
+					};
+					D3CB90182A7124AF0047BE0E = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = D3CB8FF92A7124AE0047BE0E;
+					};
+				};
+			};
+			buildConfigurationList = D3CB8FF52A7124AE0047BE0E /* Build configuration list for PBXProject "WellConnectLive" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D3CB8FF12A7124AE0047BE0E;
+			productRefGroup = D3CB8FFB2A7124AE0047BE0E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D3CB8FF92A7124AE0047BE0E /* WellConnectLive */,
+				D3CB900E2A7124AF0047BE0E /* WellConnectLiveTests */,
+				D3CB90182A7124AF0047BE0E /* WellConnectLiveUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D3CB8FF82A7124AE0047BE0E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3CB90052A7124AE0047BE0E /* Preview Assets.xcassets in Resources */,
+				D3CB90022A7124AE0047BE0E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3CB900D2A7124AF0047BE0E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3CB90172A7124AF0047BE0E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D3CB8FF62A7124AE0047BE0E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3CB90322A71251F0047BE0E /* LoginView.swift in Sources */,
+				D3CB90072A7124AE0047BE0E /* Persistence.swift in Sources */,
+				D3CB90002A7124AE0047BE0E /* ContentView.swift in Sources */,
+				D3CB90402A7125920047BE0E /* AppState.swift in Sources */,
+				D3CB90442A7125A40047BE0E /* MainStateNavigation.swift in Sources */,
+				D3CB90372A7125400047BE0E /* RegistrationView.swift in Sources */,
+				D3CB900A2A7124AE0047BE0E /* WellConnectLive.xcdatamodeld in Sources */,
+				D3CB903B2A71255F0047BE0E /* RegistrationViewModel.swift in Sources */,
+				D3CB902E2A7125010047BE0E /* LoginViewModel.swift in Sources */,
+				D3CB8FFE2A7124AE0047BE0E /* WellConnectLiveApp.swift in Sources */,
+				D3CB90492A7125C80047BE0E /* UserModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3CB900B2A7124AF0047BE0E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3CB903C2A71255F0047BE0E /* RegistrationViewModel.swift in Sources */,
+				D3CB90452A7125A40047BE0E /* MainStateNavigation.swift in Sources */,
+				D3CB904A2A7125C80047BE0E /* UserModel.swift in Sources */,
+				D3CB90332A71251F0047BE0E /* LoginView.swift in Sources */,
+				D3CB902F2A7125010047BE0E /* LoginViewModel.swift in Sources */,
+				D3CB90412A7125920047BE0E /* AppState.swift in Sources */,
+				D3CB90142A7124AF0047BE0E /* WellConnectLiveTests.swift in Sources */,
+				D3CB90382A7125400047BE0E /* RegistrationView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3CB90152A7124AF0047BE0E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3CB901E2A7124AF0047BE0E /* WellConnectLiveUITests.swift in Sources */,
+				D3CB903D2A71255F0047BE0E /* RegistrationViewModel.swift in Sources */,
+				D3CB90462A7125A40047BE0E /* MainStateNavigation.swift in Sources */,
+				D3CB90422A7125920047BE0E /* AppState.swift in Sources */,
+				D3CB90202A7124AF0047BE0E /* WellConnectLiveUITestsLaunchTests.swift in Sources */,
+				D3CB90342A71251F0047BE0E /* LoginView.swift in Sources */,
+				D3CB90302A7125010047BE0E /* LoginViewModel.swift in Sources */,
+				D3CB904B2A7125C80047BE0E /* UserModel.swift in Sources */,
+				D3CB90392A7125400047BE0E /* RegistrationView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D3CB90112A7124AF0047BE0E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D3CB8FF92A7124AE0047BE0E /* WellConnectLive */;
+			targetProxy = D3CB90102A7124AF0047BE0E /* PBXContainerItemProxy */;
+		};
+		D3CB901B2A7124AF0047BE0E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D3CB8FF92A7124AE0047BE0E /* WellConnectLive */;
+			targetProxy = D3CB901A2A7124AF0047BE0E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		D3CB90212A7124AF0047BE0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D3CB90222A7124AF0047BE0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D3CB90242A7124AF0047BE0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"WellConnectLive/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = MarkelJM.WellConnectLive;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D3CB90252A7124AF0047BE0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"WellConnectLive/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = MarkelJM.WellConnectLive;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		D3CB90272A7124AF0047BE0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = MarkelJM.WellConnectLiveTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WellConnectLive.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WellConnectLive";
+			};
+			name = Debug;
+		};
+		D3CB90282A7124AF0047BE0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = MarkelJM.WellConnectLiveTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WellConnectLive.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WellConnectLive";
+			};
+			name = Release;
+		};
+		D3CB902A2A7124AF0047BE0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = MarkelJM.WellConnectLiveUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = WellConnectLive;
+			};
+			name = Debug;
+		};
+		D3CB902B2A7124AF0047BE0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = MarkelJM.WellConnectLiveUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = WellConnectLive;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D3CB8FF52A7124AE0047BE0E /* Build configuration list for PBXProject "WellConnectLive" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3CB90212A7124AF0047BE0E /* Debug */,
+				D3CB90222A7124AF0047BE0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D3CB90232A7124AF0047BE0E /* Build configuration list for PBXNativeTarget "WellConnectLive" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3CB90242A7124AF0047BE0E /* Debug */,
+				D3CB90252A7124AF0047BE0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D3CB90262A7124AF0047BE0E /* Build configuration list for PBXNativeTarget "WellConnectLiveTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3CB90272A7124AF0047BE0E /* Debug */,
+				D3CB90282A7124AF0047BE0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D3CB90292A7124AF0047BE0E /* Build configuration list for PBXNativeTarget "WellConnectLiveUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3CB902A2A7124AF0047BE0E /* Debug */,
+				D3CB902B2A7124AF0047BE0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D3CB90082A7124AE0047BE0E /* WellConnectLive.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D3CB90092A7124AE0047BE0E /* WellConnectLive.xcdatamodel */,
+			);
+			currentVersion = D3CB90092A7124AE0047BE0E /* WellConnectLive.xcdatamodel */;
+			path = WellConnectLive.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = D3CB8FF22A7124AE0047BE0E /* Project object */;
+}
