@@ -29,9 +29,6 @@ struct wellnesstrackApp: App {
 
     var body: some Scene {
         WindowGroup {
-            NavigationView {
-                    ContentView()
-                  }
             //Accedemos a la clase de navegacion para movernos de vista según el appState que tengamos
             MainStateNavigation()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)

@@ -37,6 +37,15 @@
 		D3CB90492A7125C80047BE0E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB90482A7125C80047BE0E /* UserModel.swift */; };
 		D3CB904A2A7125C80047BE0E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB90482A7125C80047BE0E /* UserModel.swift */; };
 		D3CB904B2A7125C80047BE0E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB90482A7125C80047BE0E /* UserModel.swift */; };
+		D3CB905C2A73BCB80047BE0E /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB905B2A73BCB80047BE0E /* PrivacyPolicyView.swift */; };
+		D3CB905D2A73BCB80047BE0E /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB905B2A73BCB80047BE0E /* PrivacyPolicyView.swift */; };
+		D3CB905E2A73BCB80047BE0E /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB905B2A73BCB80047BE0E /* PrivacyPolicyView.swift */; };
+		D3CB90602A73BF470047BE0E /* TermsAndConditionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB905F2A73BF470047BE0E /* TermsAndConditionsView.swift */; };
+		D3CB90612A73BF470047BE0E /* TermsAndConditionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB905F2A73BF470047BE0E /* TermsAndConditionsView.swift */; };
+		D3CB90622A73BF470047BE0E /* TermsAndConditionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB905F2A73BF470047BE0E /* TermsAndConditionsView.swift */; };
+		D3CB90642A73BF6E0047BE0E /* PrivacyPolicyDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB90632A73BF6E0047BE0E /* PrivacyPolicyDetailsView.swift */; };
+		D3CB90652A73BF6E0047BE0E /* PrivacyPolicyDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB90632A73BF6E0047BE0E /* PrivacyPolicyDetailsView.swift */; };
+		D3CB90662A73BF6E0047BE0E /* PrivacyPolicyDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB90632A73BF6E0047BE0E /* PrivacyPolicyDetailsView.swift */; };
 		D6D125B02A72BE0C00F699D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D6D125AF2A72BE0C00F699D5 /* GoogleService-Info.plist */; };
 		D6D125B32A72C06C00F699D5 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = D6D125B22A72C06C00F699D5 /* FirebaseAnalytics */; };
 		D6D125B52A72C06C00F699D5 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = D6D125B42A72C06C00F699D5 /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -103,6 +112,9 @@
 		D3CB903F2A7125920047BE0E /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		D3CB90432A7125A40047BE0E /* MainStateNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStateNavigation.swift; sourceTree = "<group>"; };
 		D3CB90482A7125C80047BE0E /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		D3CB905B2A73BCB80047BE0E /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
+		D3CB905F2A73BF470047BE0E /* TermsAndConditionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsView.swift; sourceTree = "<group>"; };
+		D3CB90632A73BF6E0047BE0E /* PrivacyPolicyDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyDetailsView.swift; sourceTree = "<group>"; };
 		D6D125AF2A72BE0C00F699D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -180,6 +192,7 @@
 		D3CB8FFC2A7124AE0047BE0E /* WellConnectLive */ = {
 			isa = PBXGroup;
 			children = (
+				D3CB905A2A73BC850047BE0E /* AvisoLegalCondiones */,
 				D3CB90472A7125B90047BE0E /* UserModel */,
 				D3CB903E2A7125710047BE0E /* AppState */,
 				D3CB90352A71252D0047BE0E /* Registration */,
@@ -253,6 +266,16 @@
 				D3CB90482A7125C80047BE0E /* UserModel.swift */,
 			);
 			path = UserModel;
+			sourceTree = "<group>";
+		};
+		D3CB905A2A73BC850047BE0E /* AvisoLegalCondiones */ = {
+			isa = PBXGroup;
+			children = (
+				D3CB905B2A73BCB80047BE0E /* PrivacyPolicyView.swift */,
+				D3CB905F2A73BF470047BE0E /* TermsAndConditionsView.swift */,
+				D3CB90632A73BF6E0047BE0E /* PrivacyPolicyDetailsView.swift */,
+			);
+			path = AvisoLegalCondiones;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -420,9 +443,12 @@
 				D3CB90322A71251F0047BE0E /* LoginView.swift in Sources */,
 				D3CB90072A7124AE0047BE0E /* Persistence.swift in Sources */,
 				D3CB90002A7124AE0047BE0E /* ContentView.swift in Sources */,
+				D3CB905C2A73BCB80047BE0E /* PrivacyPolicyView.swift in Sources */,
+				D3CB90642A73BF6E0047BE0E /* PrivacyPolicyDetailsView.swift in Sources */,
 				D3CB90402A7125920047BE0E /* AppState.swift in Sources */,
 				D3CB90442A7125A40047BE0E /* MainStateNavigation.swift in Sources */,
 				D3CB90372A7125400047BE0E /* RegistrationView.swift in Sources */,
+				D3CB90602A73BF470047BE0E /* TermsAndConditionsView.swift in Sources */,
 				D3CB900A2A7124AE0047BE0E /* WellConnectLive.xcdatamodeld in Sources */,
 				D3CB903B2A71255F0047BE0E /* RegistrationViewModel.swift in Sources */,
 				D3CB902E2A7125010047BE0E /* LoginViewModel.swift in Sources */,
@@ -438,8 +464,11 @@
 				D3CB903C2A71255F0047BE0E /* RegistrationViewModel.swift in Sources */,
 				D3CB90452A7125A40047BE0E /* MainStateNavigation.swift in Sources */,
 				D3CB904A2A7125C80047BE0E /* UserModel.swift in Sources */,
+				D3CB905D2A73BCB80047BE0E /* PrivacyPolicyView.swift in Sources */,
+				D3CB90612A73BF470047BE0E /* TermsAndConditionsView.swift in Sources */,
 				D3CB90332A71251F0047BE0E /* LoginView.swift in Sources */,
 				D3CB902F2A7125010047BE0E /* LoginViewModel.swift in Sources */,
+				D3CB90652A73BF6E0047BE0E /* PrivacyPolicyDetailsView.swift in Sources */,
 				D3CB90412A7125920047BE0E /* AppState.swift in Sources */,
 				D3CB90142A7124AF0047BE0E /* WellConnectLiveTests.swift in Sources */,
 				D3CB90382A7125400047BE0E /* RegistrationView.swift in Sources */,
@@ -450,9 +479,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3CB90662A73BF6E0047BE0E /* PrivacyPolicyDetailsView.swift in Sources */,
 				D3CB901E2A7124AF0047BE0E /* WellConnectLiveUITests.swift in Sources */,
 				D3CB903D2A71255F0047BE0E /* RegistrationViewModel.swift in Sources */,
+				D3CB90622A73BF470047BE0E /* TermsAndConditionsView.swift in Sources */,
 				D3CB90462A7125A40047BE0E /* MainStateNavigation.swift in Sources */,
+				D3CB905E2A73BCB80047BE0E /* PrivacyPolicyView.swift in Sources */,
 				D3CB90422A7125920047BE0E /* AppState.swift in Sources */,
 				D3CB90202A7124AF0047BE0E /* WellConnectLiveUITestsLaunchTests.swift in Sources */,
 				D3CB90342A71251F0047BE0E /* LoginView.swift in Sources */,
