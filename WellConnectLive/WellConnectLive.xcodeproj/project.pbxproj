@@ -46,6 +46,9 @@
 		D3CB90642A73BF6E0047BE0E /* PrivacyPolicyDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB90632A73BF6E0047BE0E /* PrivacyPolicyDetailsView.swift */; };
 		D3CB90652A73BF6E0047BE0E /* PrivacyPolicyDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB90632A73BF6E0047BE0E /* PrivacyPolicyDetailsView.swift */; };
 		D3CB90662A73BF6E0047BE0E /* PrivacyPolicyDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB90632A73BF6E0047BE0E /* PrivacyPolicyDetailsView.swift */; };
+		D3CB90682A73CF720047BE0E /* User+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB90672A73CF720047BE0E /* User+Firebase.swift */; };
+		D3CB90692A73CF720047BE0E /* User+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB90672A73CF720047BE0E /* User+Firebase.swift */; };
+		D3CB906A2A73CF720047BE0E /* User+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB90672A73CF720047BE0E /* User+Firebase.swift */; };
 		D6D125B02A72BE0C00F699D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D6D125AF2A72BE0C00F699D5 /* GoogleService-Info.plist */; };
 		D6D125B32A72C06C00F699D5 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = D6D125B22A72C06C00F699D5 /* FirebaseAnalytics */; };
 		D6D125B52A72C06C00F699D5 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = D6D125B42A72C06C00F699D5 /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -115,6 +118,7 @@
 		D3CB905B2A73BCB80047BE0E /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
 		D3CB905F2A73BF470047BE0E /* TermsAndConditionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsView.swift; sourceTree = "<group>"; };
 		D3CB90632A73BF6E0047BE0E /* PrivacyPolicyDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyDetailsView.swift; sourceTree = "<group>"; };
+		D3CB90672A73CF720047BE0E /* User+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Firebase.swift"; sourceTree = "<group>"; };
 		D6D125AF2A72BE0C00F699D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -264,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				D3CB90482A7125C80047BE0E /* UserModel.swift */,
+				D3CB90672A73CF720047BE0E /* User+Firebase.swift */,
 			);
 			path = UserModel;
 			sourceTree = "<group>";
@@ -452,6 +457,7 @@
 				D3CB900A2A7124AE0047BE0E /* WellConnectLive.xcdatamodeld in Sources */,
 				D3CB903B2A71255F0047BE0E /* RegistrationViewModel.swift in Sources */,
 				D3CB902E2A7125010047BE0E /* LoginViewModel.swift in Sources */,
+				D3CB90682A73CF720047BE0E /* User+Firebase.swift in Sources */,
 				D3CB8FFE2A7124AE0047BE0E /* WellConnectLiveApp.swift in Sources */,
 				D3CB90492A7125C80047BE0E /* UserModel.swift in Sources */,
 			);
@@ -470,6 +476,7 @@
 				D3CB902F2A7125010047BE0E /* LoginViewModel.swift in Sources */,
 				D3CB90652A73BF6E0047BE0E /* PrivacyPolicyDetailsView.swift in Sources */,
 				D3CB90412A7125920047BE0E /* AppState.swift in Sources */,
+				D3CB90692A73CF720047BE0E /* User+Firebase.swift in Sources */,
 				D3CB90142A7124AF0047BE0E /* WellConnectLiveTests.swift in Sources */,
 				D3CB90382A7125400047BE0E /* RegistrationView.swift in Sources */,
 			);
@@ -485,6 +492,7 @@
 				D3CB90622A73BF470047BE0E /* TermsAndConditionsView.swift in Sources */,
 				D3CB90462A7125A40047BE0E /* MainStateNavigation.swift in Sources */,
 				D3CB905E2A73BCB80047BE0E /* PrivacyPolicyView.swift in Sources */,
+				D3CB906A2A73CF720047BE0E /* User+Firebase.swift in Sources */,
 				D3CB90422A7125920047BE0E /* AppState.swift in Sources */,
 				D3CB90202A7124AF0047BE0E /* WellConnectLiveUITestsLaunchTests.swift in Sources */,
 				D3CB90342A71251F0047BE0E /* LoginView.swift in Sources */,
