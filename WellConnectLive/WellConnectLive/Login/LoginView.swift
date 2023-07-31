@@ -4,11 +4,16 @@
 //
 //  Created by Markel Juaristi on 26/7/23.
 //
+
 import SwiftUI
 
 struct LoginView: View {
-    @EnvironmentObject var appState : AppState
-    @StateObject var viewModel = LoginViewModel()
+    @ObservedObject var viewModel: LoginViewModel
+    @EnvironmentObject var appState: AppState
+    
+    init(appState: AppState) {
+            self.viewModel = LoginViewModel(appState: appState)
+        }
 
     var body: some View {
         ZStack {
@@ -63,11 +68,12 @@ struct LoginView: View {
                 }
                 .padding(.top, 10)
                 
-                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                Button(action: {appState.navigationState = .forgotPassword}, label: {
                     Text("¿Olvidaste tu contraseña?")
                         .underline()
                 })
                 .padding(.top, 10)
+
                 
                 Spacer()
             }
@@ -81,7 +87,9 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        let appState = AppState()
+                LoginView(appState: appState).environmentObject(appState)
+        
     }
 }
 

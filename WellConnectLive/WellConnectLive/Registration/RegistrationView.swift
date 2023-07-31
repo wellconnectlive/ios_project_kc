@@ -8,7 +8,13 @@
 import SwiftUI
 
 struct RegistrationView: View {
-    @StateObject var viewModel = RegistrationViewModel()
+    @ObservedObject var viewModel: RegistrationViewModel
+    @EnvironmentObject var appState: AppState
+    @State var showingTermsAlert = false // Se usa para controlar la visualización del mensaje emergente del aviso legal y condiciones
+    
+    init(appState: AppState) {
+        self.viewModel = RegistrationViewModel(appState: appState)
+    }
     
     var body: some View {
         ZStack {
@@ -18,10 +24,6 @@ struct RegistrationView: View {
             VStack {
                 
                 
-                Text("Ingresa tu información personal")
-                    .font(.title2)
-                    .foregroundColor(.gray)
-                    .padding(.bottom, 20)
                 TextField("Nombre", text: $viewModel.firstName)
                     .padding()
                     .background(Color.gray.opacity(0.2))
@@ -44,7 +46,7 @@ struct RegistrationView: View {
                     .background(Color.gray.opacity(0.2))
                     .cornerRadius(10)
                     .padding(.top, 10)
-                DatePicker("Fecha de nacimiento", selection: $viewModel.birthDate, displayedComponents: .date)
+                DatePicker("Fecha de nacimiento", selection: $viewModel.fechaInscripcion, displayedComponents: .date)
                     .padding()
                     .background(Color.gray.opacity(0.2))
                     .cornerRadius(10)
@@ -66,13 +68,26 @@ struct RegistrationView: View {
                     .cornerRadius(10)
                     .padding(.top, 10)
                 
+                Button(action: { showingTermsAlert = true }) {
+                            Text("Aceptar Términos y Condiciones")
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color.clear)
+                                .foregroundColor(.blue)
+                                .font(.caption)
+                        }.sheet(isPresented: $showingTermsAlert) {
+                            PrivacyPolicyView(isShown: $showingTermsAlert)
+                        }
+                
                 Group {
-                    if !viewModel.errorMessage.isEmpty {
-                        Text(viewModel.errorMessage)
-                            .foregroundColor(.red)
-                    }
-
-                    Button(action: viewModel.registerUser) {
+                    Button(action: {
+                        viewModel.registerUser()
+                        if viewModel.errorMessage.isEmpty {
+                            print("Usuario registrado exitosamente!")
+                        } else {
+                            print(viewModel.errorMessage)
+                        }
+                    }) {
                         Text("Registrar")
                             .frame(width: 200, height: 50)
                             .background(Color.orange)
@@ -80,6 +95,7 @@ struct RegistrationView: View {
                             .cornerRadius(10)
                             .padding(.top, 10)
                     }
+
                 }
 
             }
@@ -90,7 +106,8 @@ struct RegistrationView: View {
     
 struct RegistrationView_Previews: PreviewProvider {
     static var previews: some View {
-        RegistrationView()
-    }
+            let appState = AppState() 
+            RegistrationView(appState: appState).environmentObject(appState)
+        }
 }
     

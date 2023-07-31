@@ -13,6 +13,9 @@ enum NavigationState {
     /* añadir cada vista que tengamos para su navegación*/
     case login
     case register
+    case home
+    case information
+    case forgotPassword
 }
 
 class AppState: ObservableObject {
