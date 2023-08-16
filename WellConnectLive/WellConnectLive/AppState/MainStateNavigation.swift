@@ -5,6 +5,7 @@
 //  Created by Markel Juaristi on 26/7/23.
 //
 
+
 import Foundation
 import SwiftUI
 
@@ -14,16 +15,21 @@ struct MainStateNavigation: View {
     var body: some View {
         switch appState.navigationState {
         case .login:
-            LoginView(appState: appState)
+            LoginView(appState: appState).environmentObject(appState)
         case .register:
-            RegistrationView(appState: appState)
+            RegistrationView(appState: appState).environmentObject(appState)
+        case .verification:
+            VerificationEmailView(appState: appState).environmentObject(appState)
+        case .profile:
+            ProfileView(appState: appState)
+
         case .home:
-            HomeView(appState: appState)
+            HomeView(appState: appState).environmentObject(appState)
         case .information:
-            InformationView(appState: appState)
+            InformationView(appState: appState).environmentObject(appState)
         case .forgotPassword:
             ForgotPasswordView().environmentObject(appState) /* debo revisar por qué en otras views he tenido que usar el inicializador, me estaba dando errores*/
-        
+            
         }
     }
 }

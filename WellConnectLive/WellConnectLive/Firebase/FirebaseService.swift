@@ -14,7 +14,7 @@ enum FirebaseAuthResult {
 }
 
 class FirebaseAuthService {
-    func registerUser(with userData: UserRegister, email: String, password: String, completion: @escaping (FirebaseAuthResult) -> Void) {
+    func registerUser(with userData: UserProfile, email: String, password: String, completion: @escaping (FirebaseAuthResult) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
             if let error = error {
                 completion(.failure(error))
@@ -24,7 +24,7 @@ class FirebaseAuthService {
             if let authResult = authResult {
                 let user = AuthUser(id: authResult.user.uid, email: authResult.user.email ?? "")
                 let db = Firestore.firestore()
-                db.collection("users").document(user.id).setData(userData.toDocumentData(), completion: { (error) in
+                db.collection("users").document(user.id).setData(userData.documentData, completion: { (error) in
                     if let error = error {
                         completion(.failure(error))
                         return

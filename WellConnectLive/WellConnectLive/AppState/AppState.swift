@@ -13,6 +13,8 @@ enum NavigationState {
     /* añadir cada vista que tengamos para su navegación*/
     case login
     case register
+    case verification
+    case profile
     case home
     case information
     case forgotPassword

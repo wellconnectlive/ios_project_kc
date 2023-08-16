@@ -74,6 +74,48 @@
 		D3CB907F2A76D2050047BE0E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB907E2A76D2050047BE0E /* HomeViewModel.swift */; };
 		D3CB90802A76D2050047BE0E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB907E2A76D2050047BE0E /* HomeViewModel.swift */; };
 		D3CB90812A76D2050047BE0E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB907E2A76D2050047BE0E /* HomeViewModel.swift */; };
+		D3DD3E6E2A84E85300758066 /* VerificationEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3E6D2A84E85300758066 /* VerificationEmailViewModel.swift */; };
+		D3DD3E6F2A84E85300758066 /* VerificationEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3E6D2A84E85300758066 /* VerificationEmailViewModel.swift */; };
+		D3DD3E702A84E85300758066 /* VerificationEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3E6D2A84E85300758066 /* VerificationEmailViewModel.swift */; };
+		D3DD3E722A84E86300758066 /* VerificationEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3E712A84E86300758066 /* VerificationEmailView.swift */; };
+		D3DD3E732A84E86300758066 /* VerificationEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3E712A84E86300758066 /* VerificationEmailView.swift */; };
+		D3DD3E742A84E86300758066 /* VerificationEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3E712A84E86300758066 /* VerificationEmailView.swift */; };
+		D3DD3E772A87918500758066 /* ProfileInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3E762A87918500758066 /* ProfileInformation.swift */; };
+		D3DD3E782A87918500758066 /* ProfileInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3E762A87918500758066 /* ProfileInformation.swift */; };
+		D3DD3E792A87918500758066 /* ProfileInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3E762A87918500758066 /* ProfileInformation.swift */; };
+		D3DD3E7C2A88E54C00758066 /* ProfileInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3E7B2A88E54C00758066 /* ProfileInfoViewModel.swift */; };
+		D3DD3E7D2A88E54C00758066 /* ProfileInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3E7B2A88E54C00758066 /* ProfileInfoViewModel.swift */; };
+		D3DD3E7E2A88E54C00758066 /* ProfileInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3E7B2A88E54C00758066 /* ProfileInfoViewModel.swift */; };
+		D3DD3E802A88EBD400758066 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3E7F2A88EBD400758066 /* ImagePicker.swift */; };
+		D3DD3E812A88EBD400758066 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3E7F2A88EBD400758066 /* ImagePicker.swift */; };
+		D3DD3E822A88EBD400758066 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3E7F2A88EBD400758066 /* ImagePicker.swift */; };
+		D3DD3E842A8A490E00758066 /* CardDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3E832A8A490E00758066 /* CardDesignView.swift */; };
+		D3DD3E852A8A490E00758066 /* CardDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3E832A8A490E00758066 /* CardDesignView.swift */; };
+		D3DD3E862A8A490E00758066 /* CardDesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3E832A8A490E00758066 /* CardDesignView.swift */; };
+		D3DD3E882A8A6AFA00758066 /* HealthInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3E872A8A6AFA00758066 /* HealthInfoView.swift */; };
+		D3DD3E892A8A6AFA00758066 /* HealthInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3E872A8A6AFA00758066 /* HealthInfoView.swift */; };
+		D3DD3E8A2A8A6AFA00758066 /* HealthInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3E872A8A6AFA00758066 /* HealthInfoView.swift */; };
+		D3DD3E8C2A8A6B7000758066 /* HealthInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3E8B2A8A6B7000758066 /* HealthInfoViewModel.swift */; };
+		D3DD3E8D2A8A6B7000758066 /* HealthInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3E8B2A8A6B7000758066 /* HealthInfoViewModel.swift */; };
+		D3DD3E8E2A8A6B7000758066 /* HealthInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3E8B2A8A6B7000758066 /* HealthInfoViewModel.swift */; };
+		D3DD3E902A8A7D6500758066 /* AllergiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3E8F2A8A7D6500758066 /* AllergiesView.swift */; };
+		D3DD3E912A8A7D6500758066 /* AllergiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3E8F2A8A7D6500758066 /* AllergiesView.swift */; };
+		D3DD3E922A8A7D6500758066 /* AllergiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3E8F2A8A7D6500758066 /* AllergiesView.swift */; };
+		D3DD3E942A8A8A6000758066 /* OtherDisease.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3E932A8A8A6000758066 /* OtherDisease.swift */; };
+		D3DD3E952A8A8A6000758066 /* OtherDisease.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3E932A8A8A6000758066 /* OtherDisease.swift */; };
+		D3DD3E962A8A8A6000758066 /* OtherDisease.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3E932A8A8A6000758066 /* OtherDisease.swift */; };
+		D3DD3E992A8B780C00758066 /* CircleContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3E982A8B780C00758066 /* CircleContactsViewModel.swift */; };
+		D3DD3E9A2A8B780C00758066 /* CircleContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3E982A8B780C00758066 /* CircleContactsViewModel.swift */; };
+		D3DD3E9B2A8B780C00758066 /* CircleContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3E982A8B780C00758066 /* CircleContactsViewModel.swift */; };
+		D3DD3E9D2A8B784D00758066 /* AddContactPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3E9C2A8B784D00758066 /* AddContactPopUpView.swift */; };
+		D3DD3E9E2A8B784D00758066 /* AddContactPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3E9C2A8B784D00758066 /* AddContactPopUpView.swift */; };
+		D3DD3E9F2A8B784D00758066 /* AddContactPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3E9C2A8B784D00758066 /* AddContactPopUpView.swift */; };
+		D3DD3EA12A8B788700758066 /* CircleContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3EA02A8B788700758066 /* CircleContactsView.swift */; };
+		D3DD3EA22A8B788700758066 /* CircleContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3EA02A8B788700758066 /* CircleContactsView.swift */; };
+		D3DD3EA32A8B788700758066 /* CircleContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3EA02A8B788700758066 /* CircleContactsView.swift */; };
+		D3DD3EA52A8B913700758066 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3EA42A8B913700758066 /* Styles.swift */; };
+		D3DD3EA62A8B913700758066 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3EA42A8B913700758066 /* Styles.swift */; };
+		D3DD3EA72A8B913700758066 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DD3EA42A8B913700758066 /* Styles.swift */; };
 		D6D125B02A72BE0C00F699D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D6D125AF2A72BE0C00F699D5 /* GoogleService-Info.plist */; };
 		D6D125B32A72C06C00F699D5 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = D6D125B22A72C06C00F699D5 /* FirebaseAnalytics */; };
 		D6D125B52A72C06C00F699D5 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = D6D125B42A72C06C00F699D5 /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -152,6 +194,20 @@
 		D3CB90712A753A890047BE0E /* KeyChainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainManager.swift; sourceTree = "<group>"; };
 		D3CB907A2A76D1E10047BE0E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		D3CB907E2A76D2050047BE0E /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		D3DD3E6D2A84E85300758066 /* VerificationEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationEmailViewModel.swift; sourceTree = "<group>"; };
+		D3DD3E712A84E86300758066 /* VerificationEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationEmailView.swift; sourceTree = "<group>"; };
+		D3DD3E762A87918500758066 /* ProfileInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInformation.swift; sourceTree = "<group>"; };
+		D3DD3E7B2A88E54C00758066 /* ProfileInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoViewModel.swift; sourceTree = "<group>"; };
+		D3DD3E7F2A88EBD400758066 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		D3DD3E832A8A490E00758066 /* CardDesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDesignView.swift; sourceTree = "<group>"; };
+		D3DD3E872A8A6AFA00758066 /* HealthInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthInfoView.swift; sourceTree = "<group>"; };
+		D3DD3E8B2A8A6B7000758066 /* HealthInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthInfoViewModel.swift; sourceTree = "<group>"; };
+		D3DD3E8F2A8A7D6500758066 /* AllergiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllergiesView.swift; sourceTree = "<group>"; };
+		D3DD3E932A8A8A6000758066 /* OtherDisease.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherDisease.swift; sourceTree = "<group>"; };
+		D3DD3E982A8B780C00758066 /* CircleContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleContactsViewModel.swift; sourceTree = "<group>"; };
+		D3DD3E9C2A8B784D00758066 /* AddContactPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactPopUpView.swift; sourceTree = "<group>"; };
+		D3DD3EA02A8B788700758066 /* CircleContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleContactsView.swift; sourceTree = "<group>"; };
+		D3DD3EA42A8B913700758066 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		D6D125AF2A72BE0C00F699D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -239,6 +295,9 @@
 		D3CB8FFC2A7124AE0047BE0E /* WellConnectLive */ = {
 			isa = PBXGroup;
 			children = (
+				D3DD3EA42A8B913700758066 /* Styles.swift */,
+				D3DD3E832A8A490E00758066 /* CardDesignView.swift */,
+				D3DD3E7F2A88EBD400758066 /* ImagePicker.swift */,
 				D399CACE2A77AAD7008EE45C /* ForgotPassword */,
 				D3CB90822A76E0860047BE0E /* Information */,
 				D3CB90792A76D1CA0047BE0E /* Home */,
@@ -297,6 +356,10 @@
 		D3CB90352A71252D0047BE0E /* Registration */ = {
 			isa = PBXGroup;
 			children = (
+				D3DD3E972A8B77EA00758066 /* CircleContacts */,
+				D3DD3E7A2A88C57400758066 /* HealthInfo */,
+				D3DD3E752A87915B00758066 /* InfoProfile */,
+				D3DD3E6C2A84E60D00758066 /* VerificationEmail */,
 				D3CB90362A7125400047BE0E /* RegistrationView.swift */,
 				D3CB903A2A71255F0047BE0E /* RegistrationViewModel.swift */,
 			);
@@ -363,6 +426,45 @@
 				D33476452A76E33900F43EE7 /* InformationViewModel.swift */,
 			);
 			path = Information;
+			sourceTree = "<group>";
+		};
+		D3DD3E6C2A84E60D00758066 /* VerificationEmail */ = {
+			isa = PBXGroup;
+			children = (
+				D3DD3E6D2A84E85300758066 /* VerificationEmailViewModel.swift */,
+				D3DD3E712A84E86300758066 /* VerificationEmailView.swift */,
+			);
+			path = VerificationEmail;
+			sourceTree = "<group>";
+		};
+		D3DD3E752A87915B00758066 /* InfoProfile */ = {
+			isa = PBXGroup;
+			children = (
+				D3DD3E762A87918500758066 /* ProfileInformation.swift */,
+				D3DD3E7B2A88E54C00758066 /* ProfileInfoViewModel.swift */,
+			);
+			path = InfoProfile;
+			sourceTree = "<group>";
+		};
+		D3DD3E7A2A88C57400758066 /* HealthInfo */ = {
+			isa = PBXGroup;
+			children = (
+				D3DD3E872A8A6AFA00758066 /* HealthInfoView.swift */,
+				D3DD3E8B2A8A6B7000758066 /* HealthInfoViewModel.swift */,
+				D3DD3E8F2A8A7D6500758066 /* AllergiesView.swift */,
+				D3DD3E932A8A8A6000758066 /* OtherDisease.swift */,
+			);
+			path = HealthInfo;
+			sourceTree = "<group>";
+		};
+		D3DD3E972A8B77EA00758066 /* CircleContacts */ = {
+			isa = PBXGroup;
+			children = (
+				D3DD3E9C2A8B784D00758066 /* AddContactPopUpView.swift */,
+				D3DD3E982A8B780C00758066 /* CircleContactsViewModel.swift */,
+				D3DD3EA02A8B788700758066 /* CircleContactsView.swift */,
+			);
+			path = CircleContacts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -530,21 +632,35 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3CB907F2A76D2050047BE0E /* HomeViewModel.swift in Sources */,
+				D3DD3E902A8A7D6500758066 /* AllergiesView.swift in Sources */,
+				D3DD3EA52A8B913700758066 /* Styles.swift in Sources */,
 				D3CB90322A71251F0047BE0E /* LoginView.swift in Sources */,
 				D3CB90072A7124AE0047BE0E /* Persistence.swift in Sources */,
 				D3CB906D2A75138D0047BE0E /* FirebaseService.swift in Sources */,
+				D3DD3E6E2A84E85300758066 /* VerificationEmailViewModel.swift in Sources */,
 				D3CB90002A7124AE0047BE0E /* ContentView.swift in Sources */,
 				D33476422A76E1A300F43EE7 /* InformationView.swift in Sources */,
 				D3CB905C2A73BCB80047BE0E /* PrivacyPolicyView.swift in Sources */,
+				D3DD3E722A84E86300758066 /* VerificationEmailView.swift in Sources */,
+				D3DD3E8C2A8A6B7000758066 /* HealthInfoViewModel.swift in Sources */,
+				D3DD3E9D2A8B784D00758066 /* AddContactPopUpView.swift in Sources */,
 				D3CB90642A73BF6E0047BE0E /* PrivacyPolicyDetailsView.swift in Sources */,
+				D3DD3E842A8A490E00758066 /* CardDesignView.swift in Sources */,
 				D3CB90402A7125920047BE0E /* AppState.swift in Sources */,
+				D3DD3EA12A8B788700758066 /* CircleContactsView.swift in Sources */,
+				D3DD3E992A8B780C00758066 /* CircleContactsViewModel.swift in Sources */,
+				D3DD3E882A8A6AFA00758066 /* HealthInfoView.swift in Sources */,
 				D3CB90722A753A890047BE0E /* KeyChainManager.swift in Sources */,
+				D3DD3E772A87918500758066 /* ProfileInformation.swift in Sources */,
 				D3CB90442A7125A40047BE0E /* MainStateNavigation.swift in Sources */,
 				D3CB907B2A76D1E10047BE0E /* HomeView.swift in Sources */,
 				D399CAD02A77AAF2008EE45C /* ForgotPasswordView.swift in Sources */,
 				D3CB90372A7125400047BE0E /* RegistrationView.swift in Sources */,
+				D3DD3E802A88EBD400758066 /* ImagePicker.swift in Sources */,
 				D33476462A76E33900F43EE7 /* InformationViewModel.swift in Sources */,
+				D3DD3E942A8A8A6000758066 /* OtherDisease.swift in Sources */,
 				D3CB90602A73BF470047BE0E /* TermsAndConditionsView.swift in Sources */,
+				D3DD3E7C2A88E54C00758066 /* ProfileInfoViewModel.swift in Sources */,
 				D3CB900A2A7124AE0047BE0E /* WellConnectLive.xcdatamodeld in Sources */,
 				D3CB903B2A71255F0047BE0E /* RegistrationViewModel.swift in Sources */,
 				D3CB902E2A7125010047BE0E /* LoginViewModel.swift in Sources */,
@@ -561,23 +677,37 @@
 			files = (
 				D3CB903C2A71255F0047BE0E /* RegistrationViewModel.swift in Sources */,
 				D3CB90452A7125A40047BE0E /* MainStateNavigation.swift in Sources */,
+				D3DD3E8D2A8A6B7000758066 /* HealthInfoViewModel.swift in Sources */,
+				D3DD3EA22A8B788700758066 /* CircleContactsView.swift in Sources */,
+				D3DD3E812A88EBD400758066 /* ImagePicker.swift in Sources */,
 				D3CB904A2A7125C80047BE0E /* UserModel.swift in Sources */,
 				D3CB90802A76D2050047BE0E /* HomeViewModel.swift in Sources */,
 				D3CB907C2A76D1E10047BE0E /* HomeView.swift in Sources */,
+				D3DD3E852A8A490E00758066 /* CardDesignView.swift in Sources */,
 				D3CB905D2A73BCB80047BE0E /* PrivacyPolicyView.swift in Sources */,
 				D3CB90612A73BF470047BE0E /* TermsAndConditionsView.swift in Sources */,
 				D33476472A76E33900F43EE7 /* InformationViewModel.swift in Sources */,
+				D3DD3E952A8A8A6000758066 /* OtherDisease.swift in Sources */,
 				D3CB90732A753A890047BE0E /* KeyChainManager.swift in Sources */,
+				D3DD3E782A87918500758066 /* ProfileInformation.swift in Sources */,
 				D3CB90332A71251F0047BE0E /* LoginView.swift in Sources */,
+				D3DD3E732A84E86300758066 /* VerificationEmailView.swift in Sources */,
 				D399CAD12A77AAF2008EE45C /* ForgotPasswordView.swift in Sources */,
 				D3CB902F2A7125010047BE0E /* LoginViewModel.swift in Sources */,
 				D3CB906E2A75138D0047BE0E /* FirebaseService.swift in Sources */,
+				D3DD3E6F2A84E85300758066 /* VerificationEmailViewModel.swift in Sources */,
 				D3CB90652A73BF6E0047BE0E /* PrivacyPolicyDetailsView.swift in Sources */,
+				D3DD3E9A2A8B780C00758066 /* CircleContactsViewModel.swift in Sources */,
 				D3CB90412A7125920047BE0E /* AppState.swift in Sources */,
 				D3CB90692A73CF720047BE0E /* User+Firebase.swift in Sources */,
+				D3DD3E9E2A8B784D00758066 /* AddContactPopUpView.swift in Sources */,
 				D399CAD52A77AB72008EE45C /* ForgotPasswordViewModel.swift in Sources */,
 				D33476432A76E1A300F43EE7 /* InformationView.swift in Sources */,
 				D3CB90142A7124AF0047BE0E /* WellConnectLiveTests.swift in Sources */,
+				D3DD3EA62A8B913700758066 /* Styles.swift in Sources */,
+				D3DD3E912A8A7D6500758066 /* AllergiesView.swift in Sources */,
+				D3DD3E892A8A6AFA00758066 /* HealthInfoView.swift in Sources */,
+				D3DD3E7D2A88E54C00758066 /* ProfileInfoViewModel.swift in Sources */,
 				D3CB90382A7125400047BE0E /* RegistrationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -586,17 +716,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3DD3E9B2A8B780C00758066 /* CircleContactsViewModel.swift in Sources */,
+				D3DD3EA72A8B913700758066 /* Styles.swift in Sources */,
 				D3CB90812A76D2050047BE0E /* HomeViewModel.swift in Sources */,
 				D3CB90662A73BF6E0047BE0E /* PrivacyPolicyDetailsView.swift in Sources */,
+				D3DD3E792A87918500758066 /* ProfileInformation.swift in Sources */,
 				D3CB901E2A7124AF0047BE0E /* WellConnectLiveUITests.swift in Sources */,
+				D3DD3E8A2A8A6AFA00758066 /* HealthInfoView.swift in Sources */,
 				D399CAD62A77AB72008EE45C /* ForgotPasswordViewModel.swift in Sources */,
 				D3CB903D2A71255F0047BE0E /* RegistrationViewModel.swift in Sources */,
 				D3CB90622A73BF470047BE0E /* TermsAndConditionsView.swift in Sources */,
 				D3CB906F2A75138D0047BE0E /* FirebaseService.swift in Sources */,
 				D33476482A76E33900F43EE7 /* InformationViewModel.swift in Sources */,
+				D3DD3E702A84E85300758066 /* VerificationEmailViewModel.swift in Sources */,
 				D3CB90462A7125A40047BE0E /* MainStateNavigation.swift in Sources */,
 				D3CB905E2A73BCB80047BE0E /* PrivacyPolicyView.swift in Sources */,
+				D3DD3E962A8A8A6000758066 /* OtherDisease.swift in Sources */,
 				D3CB90742A753A890047BE0E /* KeyChainManager.swift in Sources */,
+				D3DD3E862A8A490E00758066 /* CardDesignView.swift in Sources */,
+				D3DD3E922A8A7D6500758066 /* AllergiesView.swift in Sources */,
+				D3DD3E822A88EBD400758066 /* ImagePicker.swift in Sources */,
+				D3DD3E7E2A88E54C00758066 /* ProfileInfoViewModel.swift in Sources */,
 				D3CB906A2A73CF720047BE0E /* User+Firebase.swift in Sources */,
 				D3CB90422A7125920047BE0E /* AppState.swift in Sources */,
 				D3CB90202A7124AF0047BE0E /* WellConnectLiveUITestsLaunchTests.swift in Sources */,
@@ -606,6 +746,10 @@
 				D33476442A76E1A300F43EE7 /* InformationView.swift in Sources */,
 				D3CB904B2A7125C80047BE0E /* UserModel.swift in Sources */,
 				D399CAD22A77AAF2008EE45C /* ForgotPasswordView.swift in Sources */,
+				D3DD3E8E2A8A6B7000758066 /* HealthInfoViewModel.swift in Sources */,
+				D3DD3E9F2A8B784D00758066 /* AddContactPopUpView.swift in Sources */,
+				D3DD3EA32A8B788700758066 /* CircleContactsView.swift in Sources */,
+				D3DD3E742A84E86300758066 /* VerificationEmailView.swift in Sources */,
 				D3CB90392A7125400047BE0E /* RegistrationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
