@@ -4,16 +4,18 @@
 //
 //  Created by Markel Juaristi on 28/7/23.
 //
+import Foundation
 import FirebaseFirestore
 
+// Extensión para AuthUser
 extension AuthUser {
-    var documentData: [String: Any] {
+    func toDocumentData() -> [String: Any] {
         return [
             "id": id,
             "email": email
         ]
     }
-    
+
     init?(from documentData: [String: Any]) {
         guard let id = documentData["id"] as? String,
               let email = documentData["email"] as? String else { return nil }
@@ -23,8 +25,9 @@ extension AuthUser {
     }
 }
 
+// Extensión para UserProfile
 extension UserProfile {
-    var documentData: [String: Any] {
+    func toDocumentData() -> [String: Any] {
         return [
             "id": id,
             "name": name,
@@ -46,7 +49,7 @@ extension UserProfile {
             "implants": implants?.map { $0.rawValue } ?? []
         ]
     }
-    
+
     init?(from documentData: [String: Any]) {
         guard let id = documentData["id"] as? String,
               let name = documentData["name"] as? String,
@@ -56,95 +59,163 @@ extension UserProfile {
         self.id = id
         self.name = name
         self.apellidoPaterno = apellidoPaterno
-        self.apellidoMaterno = documentData["apellidoMaterno"] as? String
-        self.genero = Gender(rawValue: documentData["genero"] as? String ?? "")
         self.dni = dni
+        self.apellidoMaterno = documentData["apellidoMaterno"] as? String
+        if let genderString = documentData["genero"] as? String {
+            self.genero = Gender(rawValue: genderString)
+        }
         self.direccion = documentData["direccion"] as? String
         self.poblacion = documentData["poblacion"] as? String
         self.pais = documentData["pais"] as? String
-        self.bloodType = BloodType(rawValue: documentData["bloodType"] as? String ?? "")
+        if let bloodTypeString = documentData["bloodType"] as? String {
+            self.bloodType = BloodType(rawValue: bloodTypeString)
+        }
         self.edad = documentData["edad"] as? Int
         self.fechaNacimiento = documentData["fechaNacimiento"] as? Date
         self.fechaInscripcion = documentData["fechaInscripcion"] as? Date
         self.phoneNumber = documentData["phoneNumber"] as? String
         self.codigoPostal = documentData["codigoPostal"] as? Int
-        self.religion = Religion(rawValue: documentData["religion"] as? String ?? "")
+        if let religionString = documentData["religion"] as? String {
+            self.religion = Religion(rawValue: religionString)
+        }
         self.photo = documentData["photo"] as? String
-        self.implants = (documentData["implants"] as? [String])?.compactMap(Implant.init)
+        if let implantsArray = documentData["implants"] as? [String] {
+            self.implants = implantsArray.compactMap { Implant(rawValue: $0) }
+        }
     }
 }
 
+// Extensión para UserData
 extension UserData {
-    var documentData: [String: Any] {
-        var data: [String: Any] = [
+    func toDocumentData() -> [String: Any] {
+        return [
             "id": id,
             "userType": userType?.rawValue ?? "",
             "note": note ?? "",
             "allowTracking": allowTracking ?? false,
-            "contacts": contacts?.map { $0.documentData } ?? [],
-            "discapacidadIntelectual": discapacidadIntelectual ?? false,
-            "diabetes": diabetes ?? false,
-            "hipertension": hipertension ?? false,
-            "alzheimer": alzheimer ?? false,
-            "autismo": autismo ?? false,
-            "enfermedadVonWillebrand": enfermedadVonWillebrand ?? false,
-            "hemofilia": hemofilia ?? false,
-            "demenciaSenil": demenciaSenil ?? false,
-            "sordera": sordera ?? false,
-            "alergies": alergies?.documentData ?? [:],
-            "otherDiseases": otherDiseases ?? []
+            "contacts": contacts?.map { $0.toDocumentData() } ?? [],
+            "diseases": diseases?.map { $0.toDocumentData() } ?? [],
+            "allergies": allergies?.toDocumentData() ?? [:]
         ]
-        return data
     }
-    
+
     init?(from documentData: [String: Any]) {
         guard let id = documentData["id"] as? String else { return nil }
         
         self.id = id
-        self.userType = UserType(rawValue: documentData["userType"] as? String ?? "")
+        if let userTypeString = documentData["userType"] as? String {
+            self.userType = UserType(rawValue: userTypeString)
+        }
         self.note = documentData["note"] as? String
         self.allowTracking = documentData["allowTracking"] as? Bool
         if let contactsData = documentData["contacts"] as? [[String: Any]] {
-            self.contacts = contactsData.compactMap(Contact.init)
-        } else {
-            self.contacts = nil
+            self.contacts = contactsData.compactMap { Contact(from: $0) }
         }
-        self.discapacidadIntelectual = documentData["discapacidadIntelectual"] as? Bool
-        self.diabetes = documentData["diabetes"] as? Bool
-        self.hipertension = documentData["hipertension"] as? Bool
-        self.alzheimer = documentData["alzheimer"] as? Bool
-        self.autismo = documentData["autismo"] as? Bool
-        self.enfermedadVonWillebrand = documentData["enfermedadVonWillebrand"] as? Bool
-        self.hemofilia = documentData["hemofilia"] as? Bool
-        self.demenciaSenil = documentData["demenciaSenil"] as? Bool
-        self.sordera = documentData["sordera"] as? Bool
-        self.otherDiseases = documentData["otherDiseases"] as? [String]
-        if let alergiesData = documentData["alergies"] as? [String: Any] {
-            self.alergies = TypeAlergies(from: alergiesData)
-        } else {
-            self.alergies = nil
+        if let diseasesData = documentData["diseases"] as? [[String: Any]] {
+            self.diseases = diseasesData.compactMap { Disease(from: $0) }
+        }
+        if let allergiesData = documentData["allergies"] as? [String: Any] {
+            self.allergies = TypeAlergies(from: allergiesData)
         }
     }
 }
 
+// Extensión para Disease
+extension Disease {
+    func toDocumentData() -> [String: Any] {
+        return [
+            "type": type.rawValue,
+            "name": name ?? "",
+            "trackings": trackings?.map { $0.toDocumentData() } ?? []
+        ]
+    }
+
+    init?(from documentData: [String: Any]) {
+        guard let typeString = documentData["type"] as? String,
+              let type = DiseaseType(rawValue: typeString) else { return nil }
+
+        self.type = type
+        self.name = documentData["name"] as? String
+
+        if let trackingData = documentData["trackings"] as? [[String: Any]] {
+            self.trackings = trackingData.compactMap { DiseaseTracking(from: $0) }
+        }
+    }
+}
+
+// Extensión para DiseaseFile
+extension DiseaseFile {
+    func toDocumentData() -> [String: Any] {
+        return [
+            "id": id,
+            "fileType": fileType.rawValue,
+            "url": url
+        ]
+    }
+
+    init?(from documentData: [String: Any]) {
+        guard let id = documentData["id"] as? String,
+              let fileTypeString = documentData["fileType"] as? String,
+              let fileType = FileType(rawValue: fileTypeString),
+              let url = documentData["url"] as? String else { return nil }
+
+        self.id = id
+        self.fileType = fileType
+        self.url = url
+    }
+}
+
+// Extensión para DiseaseTracking
+extension DiseaseTracking {
+    func toDocumentData() -> [String: Any] {
+        return [
+            "id": id,
+            "note": note ?? "",
+            "date": date,
+            "files": files?.map { $0.toDocumentData() } ?? []
+        ]
+    }
+
+    init?(from documentData: [String: Any]) {
+        guard let id = documentData["id"] as? String,
+              let date = documentData["date"] as? Date else { return nil }
+
+        self.id = id
+        self.date = date
+        self.note = documentData["note"] as? String
+
+        if let filesData = documentData["files"] as? [[String: Any]] {
+            self.files = filesData.compactMap { DiseaseFile(from: $0) }
+        }
+    }
+}
+
+// Extensión para TypeAlergies
 extension TypeAlergies {
-    var documentData: [String: Any] {
+    func toDocumentData() -> [String: Any] {
         return [
             "allergiesMedicamentos": allergiesMedicamentos?.rawValue ?? "",
             "allergiesAlimentacion": allergiesAlimentacion?.rawValue ?? "",
             "allergiesOtros": allergiesOtros?.rawValue ?? ""
         ]
     }
-    
+
     init?(from documentData: [String: Any]) {
-        self.allergiesMedicamentos = AllergyMedicamentos(rawValue: documentData["allergiesMedicamentos"] as? String ?? "")
-        self.allergiesAlimentacion = AllergyAlimentacion(rawValue: documentData["allergiesAlimentacion"] as? String ?? "")
-        self.allergiesOtros = AllergyOtros(rawValue: documentData["allergiesOtros"] as? String ?? "")
+        if let medString = documentData["allergiesMedicamentos"] as? String {
+            self.allergiesMedicamentos = AllergyMedicamentos(rawValue: medString)
+        }
+        if let aliString = documentData["allergiesAlimentacion"] as? String {
+            self.allergiesAlimentacion = AllergyAlimentacion(rawValue: aliString)
+        }
+        if let otrosString = documentData["allergiesOtros"] as? String {
+            self.allergiesOtros = AllergyOtros(rawValue: otrosString)
+        }
     }
 }
 
+// Extensión para Contact
 extension Contact {
-    var documentData: [String: Any] {
+    func toDocumentData() -> [String: Any] {
         return [
             "id": id,
             "name": name,
@@ -155,14 +226,17 @@ extension Contact {
             "compartirUbicacion": compartirUbicacion ?? false
         ]
     }
-    
+
     init?(from documentData: [String: Any]) {
         guard let id = documentData["id"] as? String,
               let name = documentData["name"] as? String else { return nil }
-        
+
         self.id = id
         self.name = name
-        self.parentesco = Parentesco(rawValue: documentData["parentesco"] as? String ?? "")
+
+        if let parentString = documentData["parentesco"] as? String {
+            self.parentesco = Parentesco(rawValue: parentString)
+        }
         self.email = documentData["email"] as? String
         self.phoneNumber = documentData["phoneNumber"] as? String
         self.direccion = documentData["direccion"] as? String
@@ -170,9 +244,15 @@ extension Contact {
     }
 }
 
-
-
-
+extension Parentesco {
+    func toDocumentData() -> String {
+        return self.rawValue
+    }
+    
+    init?(from documentData: String) {
+        self.init(rawValue: documentData)
+    }
+}
 
 
 /*

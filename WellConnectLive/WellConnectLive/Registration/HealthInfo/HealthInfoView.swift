@@ -36,68 +36,35 @@ struct HealthInfoView: View {
             OtherDiseasePopupView(otherDiseaseText: $otherDiseaseText)
         }
     }
-        
+    
     var trackingSection: some View {
         CardView {
-            Toggle(isOn: $viewModel.allowTracking) {
+            //ya que lo tenemos como opcional; podemos usar guard o if let, pero para un toggle no es la forma mas directa o recomendable, segun youtube
+            Toggle(isOn: Binding<Bool>(
+                get: { self.viewModel.userData.allowTracking ?? false },
+                set: { self.viewModel.userData.allowTracking = $0 }
+            )) {
                 Text("Permitir seguimiento")
             }
+
         }
     }
     
     var generalHealthSection: some View {
         VStack(spacing: 5) {
-            CardView {
-                Toggle(isOn: $viewModel.discapacidadIntelectual) {
-                    Text("Discapacidad Intelectual")
-                }
-            }
-            
-            CardView {
-                Toggle(isOn: $viewModel.diabetes) {
-                    Text("Diabetes")
-                }
-            }
-            
-            CardView {
-                Toggle(isOn: $viewModel.hipertension) {
-                    Text("Hipertensión")
-                }
-            }
-            
-            CardView {
-                Toggle(isOn: $viewModel.alzheimer) {
-                    Text("Alzheimer")
-                }
-            }
-            
-            CardView {
-                Toggle(isOn: $viewModel.autismo) {
-                    Text("Autismo")
-                }
-            }
-            
-            CardView {
-                Toggle(isOn: $viewModel.enfermedadVonWillebrand) {
-                    Text("Enfermedad Von Willebrand")
-                }
-            }
-            
-            CardView {
-                Toggle(isOn: $viewModel.hemofilia) {
-                    Text("Hemofilia")
-                }
-            }
-            
-            CardView {
-                Toggle(isOn: $viewModel.demenciaSenil) {
-                    Text("Demencia Senil")
-                }
-            }
-            
-            CardView {
-                Toggle(isOn: $viewModel.sordera) {
-                    Text("Sordera")
+            ForEach(Disease.DiseaseType.allCases, id: \.self) { diseaseType in
+                CardView {
+                    Toggle(isOn: Binding(get: {
+                        return self.viewModel.diseases.contains(where: { $0.type == diseaseType })
+                    }, set: { (newValue) in
+                        if newValue {
+                            self.viewModel.diseases.append(Disease(type: diseaseType))
+                        } else {
+                            self.viewModel.diseases.removeAll(where: { $0.type == diseaseType })
+                        }
+                    })) {
+                        Text(diseaseType.rawValue.capitalized)
+                    }
                 }
             }
         }
@@ -129,17 +96,11 @@ struct HealthInfoView: View {
             }
         }
     }
-    
-    
-    
-    
-    
-    struct HealthInfoView_Previews: PreviewProvider {
-        static var previews: some View {
-            HealthInfoView(viewModel: HealthInfoViewModel())
-        }
+}
+
+
+struct HealthInfoView_Previews: PreviewProvider {
+    static var previews: some View {
+        HealthInfoView(viewModel: HealthInfoViewModel()) 
     }
-    
-    
-    
 }

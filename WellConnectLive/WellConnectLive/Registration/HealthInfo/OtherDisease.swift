@@ -4,7 +4,6 @@
 //
 //  Created by Markel Juaristi on 14/8/23.
 //
-
 import Foundation
 import SwiftUI
 
@@ -40,7 +39,6 @@ struct OtherDiseasePopupView: View {
                     .font(.title2)
             }
 
-            // Botón Editar
             Button(action: {
                 isEditing.toggle()
             }) {
@@ -58,7 +56,6 @@ struct OtherDiseasePopupView: View {
 
             Button("OK") {
                 // Guarda las enfermedades etc.
-                // Cierra el popup:
                 self.presentationMode.wrappedValue.dismiss()
             }
             .padding()
