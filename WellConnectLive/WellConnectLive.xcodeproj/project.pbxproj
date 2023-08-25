@@ -13,6 +13,9 @@
 		D33476462A76E33900F43EE7 /* InformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33476452A76E33900F43EE7 /* InformationViewModel.swift */; };
 		D33476472A76E33900F43EE7 /* InformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33476452A76E33900F43EE7 /* InformationViewModel.swift */; };
 		D33476482A76E33900F43EE7 /* InformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33476452A76E33900F43EE7 /* InformationViewModel.swift */; };
+		D36DE3F82A9369580046E2B1 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36DE3F72A9369580046E2B1 /* FirebaseManager.swift */; };
+		D36DE3F92A9369580046E2B1 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36DE3F72A9369580046E2B1 /* FirebaseManager.swift */; };
+		D36DE3FA2A9369580046E2B1 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36DE3F72A9369580046E2B1 /* FirebaseManager.swift */; };
 		D399CAD02A77AAF2008EE45C /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D399CACF2A77AAF2008EE45C /* ForgotPasswordView.swift */; };
 		D399CAD12A77AAF2008EE45C /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D399CACF2A77AAF2008EE45C /* ForgotPasswordView.swift */; };
 		D399CAD22A77AAF2008EE45C /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D399CACF2A77AAF2008EE45C /* ForgotPasswordView.swift */; };
@@ -165,6 +168,7 @@
 /* Begin PBXFileReference section */
 		D33476412A76E1A300F43EE7 /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationView.swift; sourceTree = "<group>"; };
 		D33476452A76E33900F43EE7 /* InformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewModel.swift; sourceTree = "<group>"; };
+		D36DE3F72A9369580046E2B1 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		D399CACF2A77AAF2008EE45C /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		D399CAD32A77AB72008EE45C /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		D3CB8FFA2A7124AE0047BE0E /* WellConnectLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WellConnectLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -398,6 +402,7 @@
 			isa = PBXGroup;
 			children = (
 				D3CB906C2A75138D0047BE0E /* FirebaseService.swift */,
+				D36DE3F72A9369580046E2B1 /* FirebaseManager.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -659,6 +664,7 @@
 				D3DD3E802A88EBD400758066 /* ImagePicker.swift in Sources */,
 				D33476462A76E33900F43EE7 /* InformationViewModel.swift in Sources */,
 				D3DD3E942A8A8A6000758066 /* OtherDisease.swift in Sources */,
+				D36DE3F82A9369580046E2B1 /* FirebaseManager.swift in Sources */,
 				D3CB90602A73BF470047BE0E /* TermsAndConditionsView.swift in Sources */,
 				D3DD3E7C2A88E54C00758066 /* ProfileInfoViewModel.swift in Sources */,
 				D3CB900A2A7124AE0047BE0E /* WellConnectLive.xcdatamodeld in Sources */,
@@ -677,6 +683,7 @@
 			files = (
 				D3CB903C2A71255F0047BE0E /* RegistrationViewModel.swift in Sources */,
 				D3CB90452A7125A40047BE0E /* MainStateNavigation.swift in Sources */,
+				D36DE3F92A9369580046E2B1 /* FirebaseManager.swift in Sources */,
 				D3DD3E8D2A8A6B7000758066 /* HealthInfoViewModel.swift in Sources */,
 				D3DD3EA22A8B788700758066 /* CircleContactsView.swift in Sources */,
 				D3DD3E812A88EBD400758066 /* ImagePicker.swift in Sources */,
@@ -728,6 +735,7 @@
 				D3CB90622A73BF470047BE0E /* TermsAndConditionsView.swift in Sources */,
 				D3CB906F2A75138D0047BE0E /* FirebaseService.swift in Sources */,
 				D33476482A76E33900F43EE7 /* InformationViewModel.swift in Sources */,
+				D36DE3FA2A9369580046E2B1 /* FirebaseManager.swift in Sources */,
 				D3DD3E702A84E85300758066 /* VerificationEmailViewModel.swift in Sources */,
 				D3CB90462A7125A40047BE0E /* MainStateNavigation.swift in Sources */,
 				D3CB905E2A73BCB80047BE0E /* PrivacyPolicyView.swift in Sources */,
