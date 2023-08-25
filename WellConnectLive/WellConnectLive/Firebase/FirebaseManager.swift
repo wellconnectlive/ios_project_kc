@@ -5,11 +5,99 @@
 //  Created by Markel Juaristi on 21/8/23.
 //
 
-import Foundation
-import FirebaseFirestore
-import FirebaseStorage
+///IRAKASLEAK ZUZENDUTAKUA:
+///
 
 
+ 
+ import Foundation
+ import FirebaseFirestore
+ import FirebaseStorage
+
+ class FirestoreManager {
+     private let db = Firestore.firestore()
+     private let storage = Storage.storage()
+
+     init() {
+         // Mantener la inicialización de la persistencia local.
+         let settings = FirestoreSettings()
+         settings.isPersistenceEnabled = true
+         db.settings = settings
+     }
+
+     // Guardar un usuario en Firestore directamente
+     func saveAuthUser(authUser: AuthUser, completion: @escaping (Error?) -> Void) {
+         let ref = db.collection("authUsers").document(authUser.id)
+         ref.setData(authUser.toDocumentData(), completion: completion)
+     }
+
+     // Guardar un perfil de usuario en Firestore directamente
+     func saveUserProfile(userProfile: UserProfile, completion: @escaping (Error?) -> Void) {
+         let ref = db.collection("userProfiles").document(userProfile.id)
+         ref.setData(userProfile.toDocumentData(), completion: completion)
+     }
+
+     // Guardar datos de usuario en Firestore directamente
+     func saveUserData(userData: UserData, completion: @escaping (Error?) -> Void) {
+         let ref = db.collection("userDatas").document(userData.id)
+         ref.setData(userData.toDocumentData(), completion: completion)
+     }
+ 
+    // Obtener un perfil de usuario por ID
+    func getUserProfile(by id: String, completion: @escaping (UserProfile?, Error?) -> Void) {
+        let ref = db.collection("userProfiles").document(id)
+        ref.getDocument { (documentSnapshot, error) in
+            guard let document = documentSnapshot, document.exists, let data = document.data(), let userProfile = UserProfile(from: data) else {
+                completion(nil, error)
+                return
+            }
+            completion(userProfile, nil)
+        }
+    }
+
+    // Obtener datos de usuario por ID
+    func getUserData(by id: String, completion: @escaping (UserData?, Error?) -> Void) {
+        let ref = db.collection("userDatas").document(id)
+        ref.getDocument { (documentSnapshot, error) in
+            guard let document = documentSnapshot, document.exists, let data = document.data(), let userData = UserData(from: data) else {
+                completion(nil, error)
+                return
+            }
+            completion(userData, nil)
+        }
+    }
+ 
+    // Subir imagen y guardar referencia en Firestore
+     func uploadImageAndSaveReference(userId: String, imageData: Data, completion: @escaping (Error?) -> Void) {
+         // Paso 1: Subir la imagen a Firebase Storage
+         let storageRef = storage.reference().child("userImages/\(userId).jpg")
+         storageRef.putData(imageData, metadata: nil) { (metadata, error) in
+             if let error = error {
+                 completion(error)
+                 return
+             }
+
+             // Paso 2: Obtener la URL de descarga de la imagen
+             storageRef.downloadURL { (url, error) in
+                 if let error = error {
+                     completion(error)
+                     return
+                 }
+
+                 guard let downloadURL = url else {
+                     completion(NSError(domain: "FirestoreManager", code: -1, userInfo: [NSLocalizedDescriptionKey: "Download URL not found."]))
+                     return
+                 }
+
+                 // Paso 3: Guardar la URL de descarga en Firestore
+                 let ref = self.db.collection("userProfiles").document(userId)
+                 ref.updateData(["imageURL": downloadURL.absoluteString], completion: completion)
+             }
+         }
+     }
+ }
+
+/*
 
 class FirestoreManager {
     private let db = Firestore.firestore()
@@ -184,96 +272,6 @@ class FirestoreManager {
     }
 }
 
+*/
 
-///IRAKASLEAK ZUZENDUTAKUA:
-///
-
-/*
  
- import Foundation
- import FirebaseFirestore
- import FirebaseStorage
-
- class FirestoreManager {
-     private let db = Firestore.firestore()
-     private let storage = Storage.storage()
-
-     init() {
-         // Mantener la inicialización de la persistencia local.
-         let settings = FirestoreSettings()
-         settings.isPersistenceEnabled = true
-         db.settings = settings
-     }
-
-     // Guardar un usuario en Firestore directamente
-     func saveAuthUser(authUser: AuthUser, completion: @escaping (Error?) -> Void) {
-         let ref = db.collection("authUsers").document(authUser.id)
-         ref.setData(authUser.toDocumentData(), completion: completion)
-     }
-
-     // Guardar un perfil de usuario en Firestore directamente
-     func saveUserProfile(userProfile: UserProfile, completion: @escaping (Error?) -> Void) {
-         let ref = db.collection("userProfiles").document(userProfile.id)
-         ref.setData(userProfile.toDocumentData(), completion: completion)
-     }
-
-     // Guardar datos de usuario en Firestore directamente
-     func saveUserData(userData: UserData, completion: @escaping (Error?) -> Void) {
-         let ref = db.collection("userDatas").document(userData.id)
-         ref.setData(userData.toDocumentData(), completion: completion)
-     }
- 
-    // Obtener un perfil de usuario por ID
-    func getUserProfile(by id: String, completion: @escaping (UserProfile?, Error?) -> Void) {
-        let ref = db.collection("userProfiles").document(id)
-        ref.getDocument { (documentSnapshot, error) in
-            guard let document = documentSnapshot, document.exists, let data = document.data(), let userProfile = UserProfile(from: data) else {
-                completion(nil, error)
-                return
-            }
-            completion(userProfile, nil)
-        }
-    }
-
-    // Obtener datos de usuario por ID
-    func getUserData(by id: String, completion: @escaping (UserData?, Error?) -> Void) {
-        let ref = db.collection("userDatas").document(id)
-        ref.getDocument { (documentSnapshot, error) in
-            guard let document = documentSnapshot, document.exists, let data = document.data(), let userData = UserData(from: data) else {
-                completion(nil, error)
-                return
-            }
-            completion(userData, nil)
-        }
-    }
- 
-    // Subir imagen y guardar referencia en Firestore
-     func uploadImageAndSaveReference(userId: String, imageData: Data, completion: @escaping (Error?) -> Void) {
-         // Paso 1: Subir la imagen a Firebase Storage
-         let storageRef = storage.reference().child("userImages/\(userId).jpg")
-         storageRef.putData(imageData, metadata: nil) { (metadata, error) in
-             if let error = error {
-                 completion(error)
-                 return
-             }
-
-             // Paso 2: Obtener la URL de descarga de la imagen
-             storageRef.downloadURL { (url, error) in
-                 if let error = error {
-                     completion(error)
-                     return
-                 }
-
-                 guard let downloadURL = url else {
-                     completion(NSError(domain: "FirestoreManager", code: -1, userInfo: [NSLocalizedDescriptionKey: "Download URL not found."]))
-                     return
-                 }
-
-                 // Paso 3: Guardar la URL de descarga en Firestore
-                 let ref = self.db.collection("userProfiles").document(userId)
-                 ref.updateData(["imageURL": downloadURL.absoluteString], completion: completion)
-             }
-         }
-     }
- }
- */
