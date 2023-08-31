@@ -11,6 +11,7 @@ import Combine
 //Para cuando se navegue entre vista AppState se encargará de saber cuál es la view destino
 enum NavigationState {
     /* añadir cada vista que tengamos para su navegación*/
+    case onboarding
     case login
     case register
     case verification
@@ -22,6 +23,6 @@ enum NavigationState {
 
 class AppState: ObservableObject {
     //Predeterminado el login
-    @Published var navigationState: NavigationState = .login
+    @Published var navigationState: NavigationState = .onboarding
 }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08DC5F7F2AA071E00007806F /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DC5F7E2AA071E00007806F /* Onboarding.swift */; };
 		D33476422A76E1A300F43EE7 /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33476412A76E1A300F43EE7 /* InformationView.swift */; };
 		D33476432A76E1A300F43EE7 /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33476412A76E1A300F43EE7 /* InformationView.swift */; };
 		D33476442A76E1A300F43EE7 /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33476412A76E1A300F43EE7 /* InformationView.swift */; };
@@ -166,6 +167,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		08DC5F7E2AA071E00007806F /* Onboarding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		D33476412A76E1A300F43EE7 /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationView.swift; sourceTree = "<group>"; };
 		D33476452A76E33900F43EE7 /* InformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewModel.swift; sourceTree = "<group>"; };
 		D36DE3F72A9369580046E2B1 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
@@ -267,6 +269,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08DC5F7D2AA071C70007806F /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				08DC5F7E2AA071E00007806F /* Onboarding.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		D399CACE2A77AAD7008EE45C /* ForgotPassword */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,6 +309,7 @@
 		D3CB8FFC2A7124AE0047BE0E /* WellConnectLive */ = {
 			isa = PBXGroup;
 			children = (
+				08DC5F7D2AA071C70007806F /* Onboarding */,
 				D3DD3EA42A8B913700758066 /* Styles.swift */,
 				D3DD3E832A8A490E00758066 /* CardDesignView.swift */,
 				D3DD3E7F2A88EBD400758066 /* ImagePicker.swift */,
@@ -657,6 +668,7 @@
 				D3DD3E882A8A6AFA00758066 /* HealthInfoView.swift in Sources */,
 				D3CB90722A753A890047BE0E /* KeyChainManager.swift in Sources */,
 				D3DD3E772A87918500758066 /* ProfileInformation.swift in Sources */,
+				08DC5F7F2AA071E00007806F /* Onboarding.swift in Sources */,
 				D3CB90442A7125A40047BE0E /* MainStateNavigation.swift in Sources */,
 				D3CB907B2A76D1E10047BE0E /* HomeView.swift in Sources */,
 				D399CAD02A77AAF2008EE45C /* ForgotPasswordView.swift in Sources */,

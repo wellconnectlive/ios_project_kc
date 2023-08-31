@@ -14,6 +14,9 @@ struct MainStateNavigation: View {
 
     var body: some View {
         switch appState.navigationState {
+            
+        case .onboarding:
+            Onboarding()
         case .login:
             LoginView(appState: appState).environmentObject(appState)
         case .register:
