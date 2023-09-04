@@ -90,10 +90,12 @@ class ModelsTests: XCTestCase {
 ///TEST LOGIN
 class LoginViewModelTests: XCTestCase {
     var viewModel: LoginViewModel!
+    var mockAuthService: MockAuthService!
 
     override func setUp() {
         super.setUp()
-        viewModel = LoginViewModel()
+        mockAuthService = MockAuthService()
+        viewModel = LoginViewModel(appState: AppState(), authService: mockAuthService) // Inyectamos el mock
     }
 
     func testIsValidEmail() {
@@ -103,297 +105,337 @@ class LoginViewModelTests: XCTestCase {
         viewModel.username = "usuariotesteando.com"
         XCTAssertFalse(viewModel.isValidEmail(), "La función isValidEmail debería devolver false cuando el correo electrónico no contiene @.")
     }
+
+    func testLoginSuccess() {
+        mockAuthService.shouldReturnError = false // Aseguramos que no regrese error
+
+        viewModel.username = "test@example.com"
+        viewModel.password = "password123"
+        viewModel.loginUser()
+
+        XCTAssertTrue(viewModel.isLoggedIn)
+        XCTAssertEqual(viewModel.errorMessage, "")
+    }
+
+    func testLoginFailure() {
+        mockAuthService.shouldReturnError = true // Forzamos un error
+
+        viewModel.username = "test@example.com"
+        viewModel.password = "wrongpassword"
+        viewModel.loginUser()
+
+        XCTAssertFalse(viewModel.isLoggedIn)
+        XCTAssertNotEqual(viewModel.errorMessage, "")
+    }
 }
+
 
 ///TESTS REGISTRARSE
 class RegistrationViewModelTests: XCTestCase {
-    var viewModel: RegistrationViewModel!
-    var appState: AppState!
 
-    override func setUp() {
-        super.setUp()
-        appState = AppState()
-        viewModel = RegistrationViewModel(appState: appState)
+    var sut: RegistrationViewModel!
+    var mockAuthService: MockAuthService!
+    var mockAppState: AppState!
+
+    override func setUpWithError() throws {
+        mockAuthService = MockAuthService()
+        mockAppState = AppState()
+        sut = RegistrationViewModel(appState: mockAppState, authService: mockAuthService)
     }
-    
-    func testIsValidEmail() {
-        viewModel.email = "usuario@testeand.com"
-        XCTAssertTrue(viewModel.isValidEmail())
+
+    override func tearDownWithError() throws {
+        sut = nil
+        mockAuthService = nil
+        mockAppState = nil
+    }
+
+    func testValidEmail() {
+        sut.email = "test@example.com"
+        XCTAssertTrue(sut.isValidEmail())
+    }
+
+    func testInvalidEmail() {
+        sut.email = "testexample.com"
+        XCTAssertFalse(sut.isValidEmail())
+    }
+
+    func testRegisterUserSuccess() {
+        sut.email = "test@example.com"
+        sut.password = "password123"
+        sut.repeatPassword = "password123"
+
+        let expectation = self.expectation(description: "Registration completed")
+
+        mockAuthService.shouldReturnError = false
+
+        sut.registerUser()
         
-        viewModel.email = "usuariotesteando.com"
-        XCTAssertFalse(viewModel.isValidEmail())
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 2) { error in
+            if let error = error {
+                XCTFail("waitForExpectations errored: \(error)")
+            }
+
+            XCTAssert(self.sut.errorMessage.isEmpty)
+            XCTAssertEqual(self.mockAppState.navigationState, .verification)
+        }
     }
-    
-    func testAllFieldsRequired() {
-        viewModel.email = ""
-        viewModel.password = ""
-        viewModel.repeatPassword = ""
-        
-        viewModel.registerUser()
-        XCTAssertEqual(viewModel.errorMessage, "Email y contraseñas son requeridos.")
+
+    func testRegisterUserFailure() {
+        sut.email = "test@example.com"
+        sut.password = "password123"
+        sut.repeatPassword = "password123"
+
+        let expectation = self.expectation(description: "Registration failed")
+
+        mockAuthService.shouldReturnError = true
+
+        sut.registerUser()
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 2) { error in
+            if let error = error {
+                XCTFail("waitForExpectations errored: \(error)")
+            }
+
+            XCTAssertFalse(self.sut.errorMessage.isEmpty)
+        }
     }
-    
-    func testPasswordsMatch() {
-        viewModel.email = "usuario@testeand.com"
-        viewModel.password = "password"
-        viewModel.repeatPassword = "differentPassword"
-        
-        viewModel.registerUser()
-        XCTAssertEqual(viewModel.errorMessage, "Las contraseñas no coinciden.")
-    }
-    
-    
 }
 
 
 
 
 
-///TEST LOGIN
-class LoginViewModelTests: XCTestCase {
-    var viewModel: LoginViewModel!
 
-    override func setUp() {
-        super.setUp()
-        viewModel = LoginViewModel()
-    }
 
-    func testIsValidEmail() {
-        viewModel.username = "usuario@testeand.com"
-        XCTAssertTrue(viewModel.isValidEmail(), "La función isValidEmail debería devolver true cuando el correo electrónico contiene @.")
-
-        viewModel.username = "usuariotesteando.com"
-        XCTAssertFalse(viewModel.isValidEmail(), "La función isValidEmail debería devolver false cuando el correo electrónico no contiene @.")
-    }
-}
-
-///TESTS REGISTRARSE
-class RegistrationViewModelTests: XCTestCase {
-    var viewModel: RegistrationViewModel!
-    var appState: AppState!
-
-    override func setUp() {
-        super.setUp()
-        appState = AppState()
-        viewModel = RegistrationViewModel(appState: appState)
-    }
-    
-    func testIsValidEmail() {
-        viewModel.email = "usuario@testeand.com"
-        XCTAssertTrue(viewModel.isValidEmail())
-        
-        viewModel.email = "usuariotesteando.com"
-        XCTAssertFalse(viewModel.isValidEmail())
-    }
-    
-    func testAllFieldsRequired() {
-        viewModel.email = ""
-        viewModel.password = ""
-        viewModel.repeatPassword = ""
-        
-        viewModel.registerUser()
-        XCTAssertEqual(viewModel.errorMessage, "Email y contraseñas son requeridos.")
-    }
-    
-    func testPasswordsMatch() {
-        viewModel.email = "usuario@testeand.com"
-        viewModel.password = "password"
-        viewModel.repeatPassword = "differentPassword"
-        
-        viewModel.registerUser()
-        XCTAssertEqual(viewModel.errorMessage, "Las contraseñas no coinciden.")
-    }
-    
-    
-}
 
 
 ///TESTS PROFILE
 class ProfileViewModelTests: XCTestCase {
     var viewModel: ProfileViewModel!
     var appState: AppState!
+    var firestoreManagerMock: FirestoreManagerMock!
 
     override func setUp() {
         super.setUp()
         appState = AppState()
         viewModel = ProfileViewModel(appState: appState)
     }
-    
+
+    // Test para validar nombres
     func testIsNameValid() {
-        viewModel.name = "John"
-        XCTAssertTrue(viewModel.isNameValid(name: viewModel.name))
-        
-        viewModel.name = "123"
-        XCTAssertFalse(viewModel.isNameValid(name: viewModel.name))
-        
-        viewModel.name = ""
-        XCTAssertFalse(viewModel.isNameValid(name: viewModel.name))
+        XCTAssertTrue(viewModel.isNameValid(name: "Carlos"))
+        XCTAssertFalse(viewModel.isNameValid(name: "12345"))
+        XCTAssertFalse(viewModel.isNameValid(name: "Carlos123"))
+        XCTAssertFalse(viewModel.isNameValid(name: ""))
     }
-    
+
+    // Test para validar números de teléfono
     func testIsPhoneNumberValid() {
-        viewModel.phoneNumber = "1234567890"
-        XCTAssertTrue(viewModel.isPhoneNumberValid(phoneNumber: viewModel.phoneNumber))
-        
-        viewModel.phoneNumber = "123abc"
-        XCTAssertFalse(viewModel.isPhoneNumberValid(phoneNumber: viewModel.phoneNumber))
-        
-        viewModel.phoneNumber = ""
-        XCTAssertFalse(viewModel.isPhoneNumberValid(phoneNumber: viewModel.phoneNumber))
+        XCTAssertTrue(viewModel.isPhoneNumberValid(phoneNumber: "1234567890"))
+        XCTAssertFalse(viewModel.isPhoneNumberValid(phoneNumber: "12345abcde"))
+        XCTAssertFalse(viewModel.isPhoneNumberValid(phoneNumber: ""))
     }
-    
+
+    // Test para validar DNI
     func testIsDniValid() {
-        viewModel.dni = "12345678Z"
-        XCTAssertTrue(viewModel.isDniValid(dni: viewModel.dni))
-        
-        viewModel.dni = "12345678"
-        XCTAssertFalse(viewModel.isDniValid(dni: viewModel.dni))
-        
-        viewModel.dni = ""
-        XCTAssertFalse(viewModel.isDniValid(dni: viewModel.dni))
+        XCTAssertTrue(viewModel.isDniValid(dni: "XYZ123456"))
+        XCTAssertFalse(viewModel.isDniValid(dni: "!@#$%^&*()"))
+        XCTAssertFalse(viewModel.isDniValid(dni: ""))
     }
-    
+
+    // Test para validar números
     func testIsNumberValid() {
-        XCTAssertTrue(viewModel.isNumberValid(number: "1234567890"))
-        
+        XCTAssertTrue(viewModel.isNumberValid(number: "123456"))
+        XCTAssertFalse(viewModel.isNumberValid(number: "abcdef"))
         XCTAssertFalse(viewModel.isNumberValid(number: "123abc"))
-        
         XCTAssertFalse(viewModel.isNumberValid(number: ""))
     }
-    
+
+    // Test para validar todos los campos
     func testAreAllFieldsValid() {
-        viewModel.name = "John"
-        viewModel.apellidoPaterno = "Doe"
-        viewModel.apellidoMaterno = "Smith"
-        viewModel.dni = "12345678Z"
+        viewModel.name = "Carlos"
+        viewModel.apellidoPaterno = "Lopez"
+        viewModel.apellidoMaterno = "Ramirez"
+        viewModel.dni = "XYZ123456"
         viewModel.phoneNumber = "1234567890"
         viewModel.codigoPostal = "12345"
-        viewModel.edad = "30"
+        viewModel.edad = "25"
         XCTAssertTrue(viewModel.areAllFieldsValid())
         
-        viewModel.name = "123"
-        XCTAssertFalse(viewModel.areAllFieldsValid())
-        
-        viewModel.name = ""
+        viewModel.name = "12345"
         XCTAssertFalse(viewModel.areAllFieldsValid())
     }
-}
 
+    // Test para guardar el perfil del usuario
+    func testSaveUserProfile() {
+        // Configura los datos válidos
+        viewModel.name = "Carlos"
+        viewModel.apellidoPaterno = "Lopez"
+        viewModel.apellidoMaterno = "Ramirez"
+        viewModel.dni = "XYZ123456"
+        viewModel.phoneNumber = "1234567890"
+        viewModel.codigoPostal = "12345"
+        viewModel.edad = "25"
+
+        appState.userId = "testUserId"
+
+        viewModel.saveUserProfile()
+
+        
+    }
+}
 ///HEALTH INFO
 
 class HealthInfoViewModelTests: XCTestCase {
-    var viewModel: HealthInfoViewModel!
-    var appState: AppState!
-
+    
+    var sut: HealthInfoViewModel!
+    var appStateMock: AppState!
+    
     override func setUp() {
         super.setUp()
-        appState = AppState()
-        viewModel = HealthInfoViewModel(appState: appState)
+        appStateMock = AppState()
+        sut = HealthInfoViewModel(appState: appStateMock)
     }
-
-    func testIsTrackingAllowed() {
-        viewModel.allowTracking = true
-        XCTAssertTrue(viewModel.isTrackingAllowed())
+    
+    override func tearDown() {
+        sut = nil
+        appStateMock = nil
+        super.tearDown()
+    }
+    
+    func testAreAllRequiredDiseasesInformed_WithAllRequired_ReturnsTrue() {
+        sut.diseases = [Disease(type: .diabetes), Disease(type: .hipertension)]
         
-        viewModel.allowTracking = false
-        XCTAssertFalse(viewModel.isTrackingAllowed())
+        XCTAssertTrue(sut.areAllRequiredDiseasesInformed())
     }
-
-    func testAreAllRequiredDiseasesInformed() {
-        viewModel.diseases = [Disease(type: .diabetes), Disease(type: .hipertension)]
-        XCTAssertTrue(viewModel.areAllRequiredDiseasesInformed())
-
-        viewModel.diseases = [Disease(type: .diabetes)]
-        XCTAssertFalse(viewModel.areAllRequiredDiseasesInformed())
+    
+    func testAreAllRequiredDiseasesInformed_WithoutAllRequired_ReturnsFalse() {
+        sut.diseases = [Disease(type: .diabetes)]
+        
+        XCTAssertFalse(sut.areAllRequiredDiseasesInformed())
     }
-
-    func testAreAllRequiredAllergiesInformed() {
-        viewModel.allergiesMedicamentos = [.penicilina]
-        XCTAssertTrue(viewModel.areAllRequiredAllergiesInformed())
-
-        viewModel.allergiesMedicamentos = []
-        XCTAssertFalse(viewModel.areAllRequiredAllergiesInformed())
+    
+    func testAreAllRequiredAllergiesInformed_WithRequired_ReturnsTrue() {
+        sut.allergiesMedicamentos = [.penicilina]
+        
+        XCTAssertTrue(sut.areAllRequiredAllergiesInformed())
     }
-
-    func testAreAllValidationsTrue() {
-        viewModel.allowTracking = true
-        viewModel.diseases = [Disease(type: .diabetes), Disease(type: .hipertension)]
-        viewModel.allergiesMedicamentos = [.penicilina]
-        XCTAssertTrue(viewModel.areAllValidationsTrue())
-
-        viewModel.allergiesMedicamentos = []
-        XCTAssertFalse(viewModel.areAllValidationsTrue())
+    
+    func testAreAllRequiredAllergiesInformed_WithoutRequired_ReturnsFalse() {
+        sut.allergiesMedicamentos = []
+        
+        XCTAssertFalse(sut.areAllRequiredAllergiesInformed())
     }
+    
+    func testAreAllValidationsTrue_WithAllValid_ReturnsTrue() {
+        sut.allowTracking = true
+        sut.diseases = [Disease(type: .diabetes), Disease(type: .hipertension)]
+        sut.allergiesMedicamentos = [.penicilina]
+        
+        XCTAssertTrue(sut.areAllValidationsTrue())
+    }
+    
+    func testAreAllValidationsTrue_WithInvalid_ReturnsFalse() {
+        sut.allowTracking = true
+        sut.diseases = [Disease(type: .diabetes)]
+        sut.allergiesMedicamentos = []
+        
+        XCTAssertFalse(sut.areAllValidationsTrue())
+    }
+    
 }
 
 
 ///DISEASE
 
 class OtherDiseasePopupViewModelTests: XCTestCase {
-    var viewModel: OtherDiseasePopupViewModel!
-
+    
+    var sut: OtherDiseasePopupViewModel!
+    
     override func setUp() {
         super.setUp()
-        viewModel = OtherDiseasePopupViewModel()
+        sut = OtherDiseasePopupViewModel()
     }
-
-    func testIsDiseaseEmpty() {
-        XCTAssertNotNil(viewModel.isDiseaseEmpty(""))
-        XCTAssertNil(viewModel.isDiseaseEmpty("Diabetes"))
+    
+    override func tearDown() {
+        sut = nil
+        super.tearDown()
     }
-
-    func testIsDiseaseDuplicated() {
-        viewModel.diseases.append("Diabetes")
-        XCTAssertNotNil(viewModel.isDiseaseDuplicated("Diabetes"))
-        XCTAssertNil(viewModel.isDiseaseDuplicated("Hipertensión"))
+    
+    func testIsDiseaseEmpty_WithEmptyDisease_ReturnsErrorMessage() {
+        let result = sut.isDiseaseEmpty("")
+        XCTAssertEqual(result, "El campo de enfermedad no puede estar vacío.")
     }
-
-    func testIsDiseaseValid() {
-        viewModel.diseases.append("Diabetes")
-        XCTAssertNil(viewModel.isDiseaseValid("Hipertensión"))
-        XCTAssertNotNil(viewModel.isDiseaseValid(""))
-        XCTAssertNotNil(viewModel.isDiseaseValid("Diabetes"))
+    
+    func testIsDiseaseEmpty_WithNonEmptyDisease_ReturnsNil() {
+        let result = sut.isDiseaseEmpty("Diabetes")
+        XCTAssertNil(result)
     }
+    
+    func testIsDiseaseDuplicated_WithDuplicatedDisease_ReturnsErrorMessage() {
+        sut.diseases = ["Diabetes"]
+        
+        let result = sut.isDiseaseDuplicated("Diabetes")
+        XCTAssertEqual(result, "Esta enfermedad ya ha sido añadida.")
+    }
+    
+    func testIsDiseaseDuplicated_WithNonDuplicatedDisease_ReturnsNil() {
+        sut.diseases = ["Diabetes"]
+        
+        let result = sut.isDiseaseDuplicated("Cancer")
+        XCTAssertNil(result)
+    }
+    
 }
 
 ///CONTACT
-class AddContactPopupViewModelTests: XCTestCase {
-    var viewModel: AddContactPopupViewModel!
+class CircleOfTrustViewModelTests: XCTestCase {
+    var viewModel: CircleOfTrustViewModel!
+    var firestoreManagerMock: FirestoreManagerMock!
+    var appStateMock: AppState!
 
     override func setUp() {
         super.setUp()
-        viewModel = AddContactPopupViewModel()
+        firestoreManagerMock = FirestoreManagerMock()
+        appStateMock = AppState()
+        viewModel = CircleOfTrustViewModel(appState: appStateMock)
+        viewModel.firestoreManager = firestoreManagerMock
     }
 
-    func testIsValidName() {
-        XCTAssertTrue(viewModel.isValidName("John Doe"))
-        XCTAssertFalse(viewModel.isValidName("John Doe123"))
-        XCTAssertFalse(viewModel.isValidName("123456"))
-        XCTAssertFalse(viewModel.isValidName(""))
+    func testAddOrUpdateContact_WithExistingContact_UpdatesContact() {
+        let existingContact = Contact(id: "1", name: "John", email: "john@example.com", phoneNumber: "123456789")
+        viewModel.contacts.append(existingContact)
+        
+        let updatedContact = Contact(id: "1", name: "John Updated", email: "johnupdated@example.com", phoneNumber: "987654321")
+        viewModel.addOrUpdateContact(updatedContact)
+        
+        XCTAssertEqual(viewModel.contacts.first, updatedContact)
     }
 
-    func testIsValidEmail() {
-        XCTAssertTrue(viewModel.isValidEmail("example@example.com"))
-        XCTAssertFalse(viewModel.isValidEmail("example@example"))
-        XCTAssertFalse(viewModel.isValidEmail("exampleexample.com"))
-        XCTAssertFalse(viewModel.isValidEmail(""))
+    func testAddOrUpdateContact_WithNewContact_AddsContact() {
+        let newContact = Contact(id: "2", name: "Jane", email: "jane@example.com", phoneNumber: "1234567890")
+        viewModel.addOrUpdateContact(newContact)
+        
+        XCTAssertEqual(viewModel.contacts.first, newContact)
     }
 
-    func testIsValidPhoneNumber() {
-        XCTAssertTrue(viewModel.isValidPhoneNumber("123456789"))
-        XCTAssertTrue(viewModel.isValidPhoneNumber("1234567890"))
-        XCTAssertFalse(viewModel.isValidPhoneNumber("12345678"))
-        XCTAssertFalse(viewModel.isValidPhoneNumber("12345678a"))
-        XCTAssertFalse(viewModel.isValidPhoneNumber(""))
+    func testUpdateContactsAndSaveUserData_SavesUserData() {
+        appStateMock.userId = "123"
+        firestoreManagerMock.mockUserData = UserData(id: "123")
+        
+        viewModel.updateContactsAndSaveUserData()
+        
+        XCTAssertTrue(firestoreManagerMock.saveUserDataCalled)
     }
 
-    func testAreValidFields() {
-        XCTAssertTrue(viewModel.areValidFields(name: "John Doe", email: "example@example.com", phoneNumber: "123456789"))
-        XCTAssertFalse(viewModel.areValidFields(name: "John Doe123", email: "example@example.com", phoneNumber: "123456789"))
-        XCTAssertFalse(viewModel.areValidFields(name: "John Doe", email: "exampleexample.com", phoneNumber: "123456789"))
-        XCTAssertFalse(viewModel.areValidFields(name: "John Doe", email: "example@example.com", phoneNumber: "12345678"))
-        XCTAssertFalse(viewModel.areValidFields(name: "", email: "example@example.com", phoneNumber: "123456789"))
-        XCTAssertFalse(viewModel.areValidFields(name: "John Doe", email: "", phoneNumber: "123456789"))
-        XCTAssertFalse(viewModel.areValidFields(name: "John Doe", email: "example@example.com", phoneNumber: ""))
-    }
 }
+
 

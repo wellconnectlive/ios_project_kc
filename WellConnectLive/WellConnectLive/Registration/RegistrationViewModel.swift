@@ -17,11 +17,18 @@ class RegistrationViewModel: ObservableObject {
     @Published var isDataSharingAccepted = false
 
     var appState: AppState
+    var authService: AuthService
     
-    private var auth = Auth.auth()
-        
-    init(appState: AppState) {
+    // Principal
+    init(appState: AppState, authService: AuthService) {
         self.appState = appState
+        self.authService = authService
+    }
+    
+    // Para el test y mock
+    convenience init(appState: AppState) {
+        let firebaseAuthService = FirebaseAuthService(appState: appState)
+        self.init(appState: appState, authService: firebaseAuthService)
     }
     
     func isValidEmail() -> Bool {
@@ -30,45 +37,35 @@ class RegistrationViewModel: ObservableObject {
     
     /// REGISTRO DE USUARIO - PRIMER PASO
     func registerUser() {
-        // Comprueba si los campos están vacíos
         guard !email.isEmpty, !password.isEmpty, !repeatPassword.isEmpty else {
             errorMessage = "Email y contraseñas son requeridos."
             return
         }
 
-        // Comprueba si el correo electrónico es válido
         guard isValidEmail() else {
             errorMessage = "Por favor, introduce una dirección de correo electrónico válida."
             return
         }
 
-        // Comprueba si las contraseñas coinciden
         guard password == repeatPassword else {
             errorMessage = "Las contraseñas no coinciden."
             return
         }
 
-        // Crear un usuario en Firebase
-        auth.createUser(withEmail: email, password: password) { authResult, error in
-            if let error = error {
-                self.errorMessage = "Error registrando el usuario: \(error.localizedDescription)"
-                return
-            }
-            
-            // Si el registro es exitoso, enviar un correo de verificación
-            authResult?.user.sendEmailVerification { error in
-                if let error = error {
-                    self.errorMessage = "Error enviando el correo de verificación: \(error.localizedDescription)"
-                    return
-                }
+        //crea usuario
+        authService.registerUser(email: email, password: password) { result in
+            switch result {
+            case .success(let user):
                 
-                /*navegar a la verification*/
                 DispatchQueue.main.async {
                     self.appState.navigationState = .verification
                 }
+            case .failure(let error):
+                self.errorMessage = "Error registrando el usuario: \(error.localizedDescription)"
             }
         }
     }
+
 }
 
 

@@ -13,6 +13,7 @@ import KeychainSwift
 
 class LoginViewModel: ObservableObject {
     var appState: AppState
+    var authService: AuthService //para el mock y el test
     
     @Published var username = ""
     @Published var password = ""
@@ -25,12 +26,21 @@ class LoginViewModel: ObservableObject {
     
     let keychain = KeychainManager()
     
-    init(appState: AppState) {
-            self.appState = appState
-            if checkIfTokenExists() {
-                self.isLoggedIn = true
-            }
+    // Este es el inicializador principal que acepta explícitamente un AuthService
+    init(appState: AppState, authService: AuthService) {
+        self.appState = appState
+        self.authService = authService
+        if checkIfTokenExists() {
+            self.isLoggedIn = true
         }
+    }
+    
+    // Esta es una sobrecarga del inicializador que proporciona el valor predeterminado
+    convenience init(appState: AppState) {
+        self.init(appState: appState, authService: FirebaseAuthService(appState: appState))
+    }
+
+
     
     // Método para comprobar si el correo electrónico contiene "@"; ya que es obligatorio
     func isValidEmail() -> Bool {
@@ -44,29 +54,37 @@ class LoginViewModel: ObservableObject {
         if !isValidEmail() {
             errorMessage = "Por favor, introduce una dirección de correo electrónico válida."
             isLoading = false
-        } else {
-            Auth.auth().signIn(withEmail: username, password: password) { [weak self] authResult, error in
-                guard let situation = self else { return }
-                if let error = error {
-                    situation.errorMessage = "Error en el inicio de sesión: \(error.localizedDescription)"
-                    situation.isLoading = false
-                } else {
-                    situation.isLoggedIn = true
-                    situation.isLoading = false
-                    // Aquí se guarda el token en Keychain
-                    authResult?.user.getIDToken(completion: { (token, error) in
-                        if let error = error {
-                            print("Error obteniendo el token: \(error)")
-                        } else if let token = token {
-                            situation.keychain.saveUserToken(token)
-                            
-                            DispatchQueue.main.async {
-                                situation.appState.navigationState = .home // cambiamos a la pantalla de inicio
-                            }
+            return
+        }
+
+        authService.registerUser(email: username, password: password) { [weak self] result in
+            guard let self = self else { return }
+
+            switch result {
+            //pata tests
+            case .success(let user):
+                // Aquí manejas la lógica para un inicio de sesión exitoso
+                self.isLoggedIn = true
+                self.errorMessage = ""
+
+                // Aquí se guarda el token en Keychain
+                Auth.auth().currentUser?.getIDToken(completion: { (token, error) in
+                    if let error = error {
+                        print("Error obteniendo el token: \(error)")
+                    } else if let token = token {
+                        self.keychain.saveUserToken(token)
+                        
+                        DispatchQueue.main.async {
+                            self.appState.navigationState = .home
                         }
-                    })
-                }
+                    }
+                })
+            //Para los Tests
+            case .failure(let error):
+                self.errorMessage = "Error en el inicio de sesión: \(error.localizedDescription)"
             }
+
+            self.isLoading = false
         }
     }
     
@@ -90,36 +108,3 @@ class LoginViewModel: ObservableObject {
     }
 }
 
-/*
- 
- import SwiftUI
- import Combine
-
- class LoginViewModel: ObservableObject {
-     @Published var email: String = ""
-     @Published var password: String = ""
-     @Published var errorMessage: String = ""
-     
-     let authService: AuthenticationService
-     
-     init(authService: AuthenticationService = FirebaseAuthService()) {
-         self.authService = authService
-     }
-     
-     func loginUser() {
-         authService.loginUser(email: email, password: password) { result in
-             switch result {
-             case .success(let user):
-                 print("Usuario inició sesión con éxito!")
-                 self.errorMessage = ""
-                 // Aquí puedes hacer lo que necesites después de que el usuario inicie sesión
-             case .failure(let error):
-                 print("Error al iniciar sesión: \(error)")
-                 self.errorMessage = error.localizedDescription
-             }
-         }
-     }
- }
-
- 
- */
