@@ -50,8 +50,9 @@ struct RegistrationView: View {
                         .foregroundColor(.blue)
                         .font(.caption)
                 }.sheet(isPresented: $showingTermsAlert) {
-                    PrivacyPolicyView(isShown: $showingTermsAlert)
+                    PrivacyPolicyView(isShown: $showingTermsAlert, isPrivacyAccepted: $viewModel.isPrivacyAccepted, isDataSharingAccepted: $viewModel.isDataSharingAccepted)
                 }
+
                 
                 Button(action: viewModel.registerUser) {
                     Text("Registrar")

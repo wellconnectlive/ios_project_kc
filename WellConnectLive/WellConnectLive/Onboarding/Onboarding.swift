@@ -1,10 +1,11 @@
 //
-//  ContentView.swift
-//  OnbordingWellConnect2
+//  OnBoarding.swift
+//  WellConnectLive
 //
-//  Created by Alex Riquelme on 16-08-23.
+//  Created by Markel Juaristi on 4/9/23.
 //
 
+import Foundation
 import SwiftUI
 
 struct Onboarding: View {
@@ -155,5 +156,3 @@ struct Onboarding_Previews: PreviewProvider {
         Onboarding()
     }
 }
-
-

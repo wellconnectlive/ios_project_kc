@@ -11,8 +11,9 @@ import Combine
 
 struct PrivacyPolicyView: View {
     @Binding var isShown: Bool
-    @State var isPrivacyAccepted = false
-    @State var isDataSharingAccepted = false
+    @Binding var isPrivacyAccepted: Bool
+    @Binding var isDataSharingAccepted: Bool
+
 
     var body: some View {
         NavigationView {
@@ -29,9 +30,36 @@ struct PrivacyPolicyView: View {
                     Toggle("He leído y comprendo la política de privacidad y los términos y condiciones.", isOn: $isPrivacyAccepted)
                     Text("Puede cambiar estas preferencias en cualquier momento desde la aplicación.")
                     Toggle("Acepto que compartan mis datos personales con médicos y asociados para mejorar las características y funciones de Wellconnect.", isOn: $isDataSharingAccepted)
-                    Button("Cerrar") {
-                        isShown = false
+                    HStack {
+                        Spacer()
+                        Button("Cerrar") {
+                            isShown = false
+                        }
+                        .padding()
+                        .background(Color.blue.opacity(0.7))
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                        
+                        Spacer()
+                        
+                        Button("Aceptar") {
+                            if isPrivacyAccepted && isDataSharingAccepted {
+                                isShown = false
+                            } else {
+                                // Mostrar un mensaje de error
+                            }
+                        }
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                        
+                        Spacer()
                     }
+
+                
+                    
+
                 }
                 .padding()
             }
@@ -43,8 +71,12 @@ struct PrivacyPolicyView: View {
 
 struct PrivacyPolicyView_Previews: PreviewProvider {
     @State static var isShown = true
+    @State static var isPrivacyAccepted = false
+    @State static var isDataSharingAccepted = false
+    
     static var previews: some View {
-        PrivacyPolicyView(isShown: $isShown)
+        PrivacyPolicyView(isShown: $isShown, isPrivacyAccepted: $isPrivacyAccepted, isDataSharingAccepted: $isDataSharingAccepted)
     }
 }
+
 

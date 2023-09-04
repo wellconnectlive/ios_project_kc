@@ -12,6 +12,7 @@ struct ProfileView: View {
     @State private var showingImagePicker = false
     @State private var image: UIImage?
     
+    
     init(appState: AppState) {
         self.viewModel = ProfileViewModel(appState: appState)
     }
@@ -47,10 +48,10 @@ struct ProfileView: View {
             VStack(spacing: 5) {
                 TextField("Nombre", text: $viewModel.name)
                     .textFieldStyle()
-                TextField("Apellido Paterno", text: $viewModel.apellidoPaterno)
-                    .textFieldStyle()
-                TextField("Apellido Materno", text: $viewModel.apellidoMaterno)
-                    .textFieldStyle()
+                //TextField("Apellido Paterno", text: $viewModel.apellidoPaterno)
+                    //.textFieldStyle()
+                //TextField("Apellido Materno", text: $viewModel.apellidoMaterno)
+                    //.textFieldStyle()
                 TextField("DNI", text: $viewModel.dni)
                     .textFieldStyle()
                 TextField("Dirección", text: $viewModel.direccion)
@@ -111,7 +112,7 @@ struct ProfileView: View {
                 }
             }
 
-            CardView {
+            /*CardView {
                 VStack {
                     TextField("Edad", text: $viewModel.edad)
                         .keyboardType(.numberPad)
@@ -122,6 +123,7 @@ struct ProfileView: View {
                 .background(Color.gray.opacity(0.2))
                 .cornerRadius(10)
             }
+             */
 
             CardView {
                 VStack(spacing: 10) {
@@ -164,7 +166,7 @@ struct ProfileView: View {
 
     
     private var saveButtonSection: some View {
-        Button(action: viewModel.saveUserProfileCD) {
+        Button(action: viewModel.saveUserProfile) {
             Text("Guardar")
                 .frame(width: 200, height: 50)
                 .background(Color.orange)

@@ -8,9 +8,14 @@
 import SwiftUI
 
 struct CircleContactsView: View {
-    @ObservedObject var viewModel = CircleOfTrustViewModel()
+    @ObservedObject var viewModel: CircleOfTrustViewModel
+    @EnvironmentObject var appState: AppState
     @State private var showAddContactPopup = false
-    @State private var contactToEdit: Contact? = nil 
+    @State private var contactToEdit: Contact? = nil
+    
+    init(appState: AppState) {
+        self.viewModel = CircleOfTrustViewModel(appState: appState)
+    }
 
     var body: some View {
         VStack(spacing: 20) {
@@ -46,10 +51,15 @@ struct CircleContactsView: View {
             }
 
             Button("Finalizar Registro") {
-                // Lógica para finalizar registro
+                viewModel.updateContactsAndSaveUserData()
+                DispatchQueue.main.async {
+                    appState.navigationState = .home
+                }
             }
             .padding()
-        }
+
+
+}
         .sheet(isPresented: $showAddContactPopup) {
             if let contact = contactToEdit {
                 AddContactPopup(contact: contact, isPresented: $showAddContactPopup, viewModel: viewModel) // Pasamos el contacto a editar
@@ -63,6 +73,8 @@ struct CircleContactsView: View {
 
 struct CircleContactsView_Previews: PreviewProvider {
     static var previews: some View {
-        CircleContactsView()
+        let appState = AppState()
+        return CircleContactsView(appState: appState).environmentObject(appState)
     }
 }
+

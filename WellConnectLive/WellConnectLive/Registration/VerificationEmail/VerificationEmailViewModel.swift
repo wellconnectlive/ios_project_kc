@@ -46,7 +46,7 @@ class VerificationEmailViewModel: ObservableObject {
             } else {
                 if let verified = Auth.auth().currentUser?.isEmailVerified, verified {
                     DispatchQueue.main.async {
-                        self.appState.navigationState = .home // Asume que hay un estado `.home` que estamos implementando con Isabel
+                        self.appState.navigationState = .profile 
                     }
                 } else {
                     self.errorMessage = "Por favor verifica tu email. Si no ves el correo, espera unos minutos o verifica la carpeta de spam."

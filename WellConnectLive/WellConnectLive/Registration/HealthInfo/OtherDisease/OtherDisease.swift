@@ -8,11 +8,12 @@ import Foundation
 import SwiftUI
 
 struct OtherDiseasePopupView: View {
+    @StateObject var viewModel = OtherDiseasePopupViewModel()
     @Binding var otherDiseaseText: String
     @State private var diseases: [String] = []
     @State private var showAlert = false
-    @State private var addedDisease = ""
-    @State private var isEditing = false // Variable de estado para el modo de edición
+    @State private var alertMessage: String = ""
+    @State private var isEditing = false // Variable de "estado" para el modo de edición
     
     @Environment(\.presentationMode) var presentationMode
 
@@ -27,11 +28,15 @@ struct OtherDiseasePopupView: View {
                 .padding()
 
             Button(action: {
-                if !otherDiseaseText.isEmpty {
-                    diseases.append(otherDiseaseText)
-                    addedDisease = otherDiseaseText
-                    otherDiseaseText = ""
+                if let errors = viewModel.isDiseaseValid(otherDiseaseText) {
+                    alertMessage = errors.joined(separator: "\n")
                     showAlert = true
+                    otherDiseaseText = ""
+                } else {
+                    diseases.append(otherDiseaseText)
+                    alertMessage = "La enfermedad \(otherDiseaseText) se ha añadido correctamente."
+                    showAlert = true
+                    otherDiseaseText = ""
                 }
             }) {
                 Image(systemName: "plus.circle.fill")
@@ -61,7 +66,7 @@ struct OtherDiseasePopupView: View {
             .padding()
         }
         .alert(isPresented: $showAlert) {
-            Alert(title: Text("Enfermedad añadida"), message: Text("La enfermedad \(addedDisease) se ha subido correctamente."), dismissButton: .default(Text("Aceptar")))
+            Alert(title: Text("Información"), message: Text(alertMessage), dismissButton: .default(Text("Aceptar")))
         }
     }
     
@@ -69,3 +74,4 @@ struct OtherDiseasePopupView: View {
         diseases.remove(atOffsets: offsets)
     }
 }
+

@@ -12,6 +12,8 @@ struct AuthUser: Codable {
     let email: String
 }
 
+
+
 struct UserProfile: Codable {
     let id: String
     let name: String
@@ -34,13 +36,14 @@ struct UserProfile: Codable {
 }
 
 struct UserData: Codable {
-    let id: String
+    var id: String
     var userType: UserType?
     var note: String?
     var allowTracking: Bool?
     var contacts: [Contact]?
     var diseases: [Disease]?
     var allergies: TypeAlergies?
+    var qr : String?
 }
 
 struct Disease: Codable {
@@ -82,10 +85,11 @@ struct DiseaseTracking: Codable {
 }
 
 struct TypeAlergies: Codable {
-    var allergiesMedicamentos: AllergyMedicamentos?
-    var allergiesAlimentacion: AllergyAlimentacion?
-    var allergiesOtros: AllergyOtros?
+    var allergiesMedicamentos: [AllergyMedicamentos]?
+    var allergiesAlimentacion: [AllergyAlimentacion]?
+    var allergiesOtros: [AllergyOtros]?
 }
+
 
 enum UserType: String, Codable {
     case premium = "Premium"

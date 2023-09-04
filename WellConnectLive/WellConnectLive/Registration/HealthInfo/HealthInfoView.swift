@@ -26,9 +26,11 @@ struct HealthInfoView: View {
                 otherDiseaseSection
                 
                 Button("Siguiente") {
+                    viewModel.saveHealthInfo()
                     showNextScreen = true
                 }
                 .padding(.top, 20)
+
             }
             .padding()
         }
@@ -101,6 +103,7 @@ struct HealthInfoView: View {
 
 struct HealthInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        HealthInfoView(viewModel: HealthInfoViewModel()) 
+        let appState = AppState()
+        HealthInfoView(viewModel: HealthInfoViewModel(appState: appState))
     }
 }

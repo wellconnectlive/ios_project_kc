@@ -13,7 +13,9 @@ class RegistrationViewModel: ObservableObject {
     @Published var password = ""
     @Published var repeatPassword = ""
     @Published var errorMessage = ""
-    
+    @Published var isPrivacyAccepted = false
+    @Published var isDataSharingAccepted = false
+
     var appState: AppState
     
     private var auth = Auth.auth()
@@ -61,6 +63,9 @@ class RegistrationViewModel: ObservableObject {
                 }
                 
                 /*navegar a la verification*/
+                DispatchQueue.main.async {
+                    self.appState.navigationState = .verification
+                }
             }
         }
     }

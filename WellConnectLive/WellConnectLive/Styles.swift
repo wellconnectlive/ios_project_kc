@@ -29,3 +29,14 @@ extension TextField {
             .cornerRadius(10)
     }
 }
+
+
+extension Color {
+    // Nota que el alpha es 0, así que este color será transparente.
+    static let primaryButtonColor = Color(red: 0 / 255, green: 173 / 255, blue: 217 / 255)
+    static let secondaryButtonColor = Color(red: 0 / 255, green: 89 / 255, blue: 109 / 255)
+    static let tertiaryButtonColor = Color(red: 139 / 255, green: 172 / 255, blue: 191 / 255, opacity: 0)
+}
+
+
+

@@ -194,23 +194,25 @@ extension DiseaseTracking {
 extension TypeAlergies {
     func toDocumentData() -> [String: Any] {
         return [
-            "allergiesMedicamentos": allergiesMedicamentos?.rawValue ?? "",
-            "allergiesAlimentacion": allergiesAlimentacion?.rawValue ?? "",
-            "allergiesOtros": allergiesOtros?.rawValue ?? ""
+            "allergiesMedicamentos": allergiesMedicamentos?.map { $0.rawValue } ?? [],
+            "allergiesAlimentacion": allergiesAlimentacion?.map { $0.rawValue } ?? [],
+            "allergiesOtros": allergiesOtros?.map { $0.rawValue } ?? []
         ]
     }
 
+
     init?(from documentData: [String: Any]) {
-        if let medString = documentData["allergiesMedicamentos"] as? String {
-            self.allergiesMedicamentos = AllergyMedicamentos(rawValue: medString)
+        if let medArray = documentData["allergiesMedicamentos"] as? [String] {
+            self.allergiesMedicamentos = medArray.compactMap { AllergyMedicamentos(rawValue: $0) }
         }
-        if let aliString = documentData["allergiesAlimentacion"] as? String {
-            self.allergiesAlimentacion = AllergyAlimentacion(rawValue: aliString)
+        if let aliArray = documentData["allergiesAlimentacion"] as? [String] {
+            self.allergiesAlimentacion = aliArray.compactMap { AllergyAlimentacion(rawValue: $0) }
         }
-        if let otrosString = documentData["allergiesOtros"] as? String {
-            self.allergiesOtros = AllergyOtros(rawValue: otrosString)
+        if let otrosArray = documentData["allergiesOtros"] as? [String] {
+            self.allergiesOtros = otrosArray.compactMap { AllergyOtros(rawValue: $0) }
         }
     }
+
 }
 
 // Extensión para Contact

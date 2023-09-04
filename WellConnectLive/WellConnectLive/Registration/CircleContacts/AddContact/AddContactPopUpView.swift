@@ -12,6 +12,7 @@ struct AddContactPopup: View {
     @Binding var isPresented: Bool
     @State private var newContact: Contact
     @ObservedObject var viewModel: CircleOfTrustViewModel
+    @ObservedObject var popupViewModel = AddContactPopupViewModel()//se instancia que cada vez llamamos a addcontactpoppup(unon nuevo), como solo tiene validadores no hay problema, pero si en futuro añdimos estados que necesiten ser compartidos entre diferntes instancias deberiamos dejarlo asi:     @ObservedObject var popupViewModel: AddContactPopupViewModel e indicarlos en iniciadores
 
     // Inicializador para editar un contacto existente
     init(contact: Contact, isPresented: Binding<Bool>, viewModel: CircleOfTrustViewModel) {
@@ -101,11 +102,19 @@ struct AddContactPopup: View {
             }
 
             Button("OK") {
-                viewModel.addOrUpdateContact(newContact)
-                isPresented = false
+                let email = newContact.email ?? ""
+                let phoneNumber = newContact.phoneNumber ?? ""
+                if popupViewModel.areValidFields(name: newContact.name, email: email, phoneNumber: phoneNumber) {
+                    viewModel.addOrUpdateContact(newContact)
+                    viewModel.updateContactsAndSaveUserData()
+                    isPresented = false
+                } else {
+                    // Mostrar un mensaje de error
+                }
             }
             .buttonStyle()
             .padding(.top, 10)
+
         }
         .padding()
     }

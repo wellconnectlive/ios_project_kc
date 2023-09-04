@@ -17,8 +17,8 @@ struct LoginView: View {
 
     var body: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [Color(red: 0/255, green: 209/255, blue: 255/255), Color.white]), startPoint: .top, endPoint: .bottom)
-                .edgesIgnoringSafeArea(.all)
+            //LinearGradient(gradient: Gradient(colors: [Color(red: 0/255, green: 209/255, blue: 255/255), Color.white]), startPoint: .top, endPoint: .bottom)
+                //.edgesIgnoringSafeArea(.all)
             
             VStack {
                 /* Aqui se debe indicar el logo final*/
@@ -43,7 +43,8 @@ struct LoginView: View {
                 Button(action: viewModel.loginUserPrueba) {
                     Text("Entrar")
                         .frame(width: 200, height: 50)
-                        .background(Color.orange)
+                        //.background(Color.orange)
+                        .background(Color.primaryButtonColor)
                         .foregroundColor(.white)
                         .cornerRadius(10)
                         .padding(.top, 90)
