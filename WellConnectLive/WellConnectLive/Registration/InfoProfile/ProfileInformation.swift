@@ -12,24 +12,44 @@ struct ProfileView: View {
     @State private var showingImagePicker = false
     @State private var image: UIImage?
     
-    
     init(appState: AppState) {
         self.viewModel = ProfileViewModel(appState: appState)
     }
     
     var body: some View {
         ZStack {
-            
-            //LinearGradient(gradient: Gradient(colors: [Color(red: 0/255, green: 209/255, blue: 255/255), Color.white]), startPoint: .top, endPoint: .bottom)
-                //.edgesIgnoringSafeArea(.all)
-            
             ScrollView {
-                Text("Vamos a crear tu perfil.")
-                    .font(.headline)
-                    .padding(.top, 10)
-                    .foregroundColor(Color.blue)//temporal 
+                VStack(alignment: .leading, spacing: 5) {
+                    HStack {
+                        Button(action: {
+                            appState.navigationState = .login
+                        }) {
+                            Image(systemName: "arrow.left")
+                                .foregroundColor(Color.primaryButtonColor)
+                                .padding()
+                        }
+                        Spacer()
+                    }
+                    
+                    RegisterProgressView(currentStep: .profileInfo)
+                                        .frame(width: 350, height: 60)
+                                        .padding()
+                    
+                    Text("Vamos a crear tu perfil.")
+                        .font(.custom("Inter", size: 40))
+                        .foregroundColor(Color.secondaryButtonColor)
+                        .padding(.leading, 20)
+
+
+                    
+                    Text("Necesitamos tus datos para poder crear un perfil más completo posible.")
+                        .font(.subheadline)
+                        .foregroundColor(Color.secondaryButtonColor)
+                        .padding(.leading, 20)
+
+                }
+                .padding(.top, 10)
                 VStack(spacing: 10) {
-                    /* debo separarlos sino no entran todos, un VStack y scroll esta limitado con 10 carcters*/
                     basicInfoSection
                     advancedInfoSection
                     photoSection
@@ -44,54 +64,68 @@ struct ProfileView: View {
     }
     
     private var basicInfoSection: some View {
-        CardView{
-            VStack(spacing: 5) {
+        VStack(spacing: 10) {
+            CardView {
                 TextField("Nombre", text: $viewModel.name)
-                    .textFieldStyle()
-                //TextField("Apellido Paterno", text: $viewModel.apellidoPaterno)
-                    //.textFieldStyle()
-                //TextField("Apellido Materno", text: $viewModel.apellidoMaterno)
-                    //.textFieldStyle()
+            }
+            CardView {
+                TextField("Apellido Paterno", text: $viewModel.apellidoPaterno)
+            }
+            CardView {
+                TextField("Apellido Materno", text: $viewModel.apellidoMaterno)
+            }
+            CardView {
                 TextField("DNI", text: $viewModel.dni)
-                    .textFieldStyle()
+            }
+            CardView {
                 TextField("Dirección", text: $viewModel.direccion)
-                    .textFieldStyle()
+            }
+            CardView {
                 TextField("Población", text: $viewModel.poblacion)
-                    .textFieldStyle()
+            }
+            CardView {
                 TextField("País", text: $viewModel.pais)
-                    .textFieldStyle()
+            }
+            CardView {
                 TextField("Número de Teléfono", text: $viewModel.phoneNumber)
-                    .textFieldStyle()
             }
         }
     }
     
     private var advancedInfoSection: some View {
-        VStack(spacing: 5) {
-            
+        VStack(spacing: 10) {
             CardView {
-                VStack(spacing: 10) {
+                VStack(alignment: .leading, spacing: 15) {
                     Text("Género")
                         .font(.headline)
-                    Picker("Género", selection: $viewModel.genero) {
-                        ForEach(Gender.allCases, id: \.self) { gender in
-                            Text(gender.rawValue).tag(gender)
-                        }
-                    }
-                    .pickerStyle(SegmentedPickerStyle())
+                    Rectangle()
+                        .fill(Color.clear)
+                        .frame(height: 45) // Defina un alto para el rectángulo
+                        .overlay(
+                            Picker("", selection: $viewModel.genero) {
+                                ForEach(Gender.allCases, id: \.self) { gender in
+                                    Text(gender.rawValue).tag(gender)
+                                }
+                            }
+                            .pickerStyle(SegmentedPickerStyle())
+                        )
                 }
             }
 
             CardView {
-                VStack(spacing: 10) {
+                VStack(alignment: .leading, spacing: 15) {
                     Text("Tipo de Sangre")
                         .font(.headline)
-                    Picker("Tipo de Sangre", selection: $viewModel.bloodType) {
-                        ForEach(BloodType.allCases, id: \.self) { bloodType in
-                            Text(bloodType.rawValue).tag(bloodType)
-                        }
-                    }
-                    .frame(maxWidth : .infinity)
+                    Rectangle()
+                        .fill(Color.clear)
+                        .frame(height: 2)
+                        .overlay(
+                            Picker("", selection: $viewModel.bloodType) {
+                                ForEach(BloodType.allCases, id: \.self) { bloodType in
+                                    Text(bloodType.rawValue).tag(bloodType)
+                                }
+                            }
+                        )
                 }
             }
 
@@ -100,50 +134,59 @@ struct ProfileView: View {
             }
             
             CardView {
-                VStack(spacing: 10) {
+                VStack(alignment: .leading, spacing: 15) {
                     Text("Religión")
                         .font(.headline)
-                    Picker("Religión", selection: $viewModel.religion) {
-                        ForEach(Religion.allCases, id: \.self) { religion in
-                            Text(religion.rawValue).tag(religion)
-                        }
-                    }
-                    .frame(maxWidth : .infinity)
+                    Rectangle()
+                        .fill(Color.clear)
+                        .frame(height: 2)
+                        .overlay(
+                            Picker("", selection: $viewModel.religion) {
+                                ForEach(Religion.allCases, id: \.self) { religion in
+                                    Text(religion.rawValue).tag(religion)
+                                }
+                            }
+                        )
                 }
             }
 
-            /*CardView {
+            CardView {
                 VStack {
                     TextField("Edad", text: $viewModel.edad)
                         .keyboardType(.numberPad)
+                }
+            }
+            
+            CardView {
+                VStack {
                     TextField("Código Postal", text: $viewModel.codigoPostal)
                         .keyboardType(.numberPad)
                 }
-                .padding()
-                .background(Color.gray.opacity(0.2))
-                .cornerRadius(10)
             }
-             */
 
             CardView {
-                VStack(spacing: 10) {
+                VStack(alignment: .leading, spacing: 15) {
                     Text("Implantes")
                         .font(.headline)
-                    Picker("Implantes", selection: $viewModel.selectedImplant) {
-                        ForEach(viewModel.implants, id: \.self) { implant in
-                            Text(implant.rawValue).tag(implant)
-                        }
-                    }
-                    .frame(maxWidth : .infinity)
+                    Rectangle()
+                        .fill(Color.clear)
+                        .frame(height: 2)
+                        .overlay(
+                            Picker("", selection: $viewModel.selectedImplant) {
+                                ForEach(viewModel.implants, id: \.self) { implant in
+                                    Text(implant.rawValue).tag(implant)
+                                }
+                            }
+                        )
                 }
             }
-
         }
     }
 
+
     private var photoSection: some View {
         CardView {
-            VStack(spacing: 5) {
+            VStack(alignment: .leading, spacing: 5) {
                 Text("Foto de Perfil")
                     .font(.headline)
                 HStack {
@@ -156,6 +199,8 @@ struct ProfileView: View {
                     Spacer()
                     Button(action: { showingImagePicker = true }) {
                         Text("Subir Foto")
+                            .padding(.trailing, 100)//para centrarlo a mano
+                        
                     }
                     .padding()
                 }
@@ -163,13 +208,11 @@ struct ProfileView: View {
         }
     }
 
-
-    
     private var saveButtonSection: some View {
         Button(action: viewModel.saveUserProfile) {
-            Text("Guardar")
+            Text("Siguiente")
                 .frame(width: 200, height: 50)
-                .background(Color.orange)
+                .background(Color.primaryButtonColor)
                 .foregroundColor(.white)
                 .cornerRadius(10)
         }
@@ -177,14 +220,14 @@ struct ProfileView: View {
     }
 }
 
-
-
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
         let appState = AppState()
         return ProfileView(appState: appState).environmentObject(appState)
     }
 }
+
+
 
 
 

@@ -31,6 +31,9 @@
 		D3B701252AA5CBB700FD2F7B /* OnBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B701242AA5CBB700FD2F7B /* OnBoarding.swift */; };
 		D3B701262AA5CBB700FD2F7B /* OnBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B701242AA5CBB700FD2F7B /* OnBoarding.swift */; };
 		D3B701272AA5CBB700FD2F7B /* OnBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B701242AA5CBB700FD2F7B /* OnBoarding.swift */; };
+		D3B7012E2AA7C78F00FD2F7B /* RegisterProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B7012D2AA7C78F00FD2F7B /* RegisterProgressView.swift */; };
+		D3B7012F2AA7C78F00FD2F7B /* RegisterProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B7012D2AA7C78F00FD2F7B /* RegisterProgressView.swift */; };
+		D3B701302AA7C78F00FD2F7B /* RegisterProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B7012D2AA7C78F00FD2F7B /* RegisterProgressView.swift */; };
 		D3CB8FFE2A7124AE0047BE0E /* WellConnectLiveApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB8FFD2A7124AE0047BE0E /* WellConnectLiveApp.swift */; };
 		D3CB90002A7124AE0047BE0E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CB8FFF2A7124AE0047BE0E /* ContentView.swift */; };
 		D3CB90022A7124AE0047BE0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3CB90012A7124AE0047BE0E /* Assets.xcassets */; };
@@ -183,6 +186,7 @@
 		D399CACF2A77AAF2008EE45C /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
 		D399CAD32A77AB72008EE45C /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		D3B701242AA5CBB700FD2F7B /* OnBoarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoarding.swift; sourceTree = "<group>"; };
+		D3B7012D2AA7C78F00FD2F7B /* RegisterProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterProgressView.swift; sourceTree = "<group>"; };
 		D3CB8FFA2A7124AE0047BE0E /* WellConnectLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WellConnectLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3CB8FFD2A7124AE0047BE0E /* WellConnectLiveApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellConnectLiveApp.swift; sourceTree = "<group>"; };
 		D3CB8FFF2A7124AE0047BE0E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -346,6 +350,7 @@
 		D3CB8FFC2A7124AE0047BE0E /* WellConnectLive */ = {
 			isa = PBXGroup;
 			children = (
+				D3B7012D2AA7C78F00FD2F7B /* RegisterProgressView.swift */,
 				D3DD3EA42A8B913700758066 /* Styles.swift */,
 				D3DD3E832A8A490E00758066 /* CardDesignView.swift */,
 				D3DD3E7F2A88EBD400758066 /* ImagePicker.swift */,
@@ -694,6 +699,7 @@
 				D3DD3E6E2A84E85300758066 /* VerificationEmailViewModel.swift in Sources */,
 				D3CB90002A7124AE0047BE0E /* ContentView.swift in Sources */,
 				D33476422A76E1A300F43EE7 /* InformationView.swift in Sources */,
+				D3B7012E2AA7C78F00FD2F7B /* RegisterProgressView.swift in Sources */,
 				D3CB905C2A73BCB80047BE0E /* PrivacyPolicyView.swift in Sources */,
 				D3DD3E722A84E86300758066 /* VerificationEmailView.swift in Sources */,
 				D3DD3E8C2A8A6B7000758066 /* HealthInfoViewModel.swift in Sources */,
@@ -769,6 +775,7 @@
 				D3DD3E892A8A6AFA00758066 /* HealthInfoView.swift in Sources */,
 				D3DD3E7D2A88E54C00758066 /* ProfileInfoViewModel.swift in Sources */,
 				D3CB90382A7125400047BE0E /* RegistrationView.swift in Sources */,
+				D3B7012F2AA7C78F00FD2F7B /* RegisterProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -813,6 +820,7 @@
 				D380FC2C2AA09F8D0057104B /* OtherDiseaseViewModel.swift in Sources */,
 				D3DD3E9F2A8B784D00758066 /* AddContactPopUpView.swift in Sources */,
 				D3DD3EA32A8B788700758066 /* CircleContactsView.swift in Sources */,
+				D3B701302AA7C78F00FD2F7B /* RegisterProgressView.swift in Sources */,
 				D3DD3E742A84E86300758066 /* VerificationEmailView.swift in Sources */,
 				D3CB90392A7125400047BE0E /* RegistrationView.swift in Sources */,
 			);

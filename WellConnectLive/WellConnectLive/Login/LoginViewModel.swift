@@ -57,13 +57,14 @@ class LoginViewModel: ObservableObject {
             return
         }
 
-        authService.registerUser(email: username, password: password) { [weak self] result in
+        // Cambia esta línea
+        authService.loginUser(email: username, password: password) { [weak self] result in
             guard let self = self else { return }
 
             switch result {
-            //pata tests
+            // para tests
             case .success(let user):
-                // Aquí manejas la lógica para un inicio de sesión exitoso
+                // Aquí se maneja  una inicio de sesión exitoso
                 self.isLoggedIn = true
                 self.errorMessage = ""
 
@@ -79,7 +80,7 @@ class LoginViewModel: ObservableObject {
                         }
                     }
                 })
-            //Para los Tests
+            // Para los Tests
             case .failure(let error):
                 self.errorMessage = "Error en el inicio de sesión: \(error.localizedDescription)"
             }
@@ -87,6 +88,7 @@ class LoginViewModel: ObservableObject {
             self.isLoading = false
         }
     }
+
     
     func checkIfTokenExists() -> Bool {
         if keychain.getUserToken() != nil {

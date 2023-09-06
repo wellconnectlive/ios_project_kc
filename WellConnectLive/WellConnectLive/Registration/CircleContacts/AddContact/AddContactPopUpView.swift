@@ -68,37 +68,62 @@ struct AddContactPopup: View {
     
     var body: some View {
         VStack(spacing: 20) {
+            HStack {
+                Spacer()
+                Text("Añadir Contacto")
+                    .font(.custom("Inter", size: 30))
+                    .foregroundColor(Color.secondaryButtonColor)
+                Spacer()
+            }
+            //.padding(.bottom, 10)
 
             CardView {
                 TextField("Nombre", text: $newContact.name)
-                    .textFieldStyle()
             }
-
+/*
             CardView {
-                Picker("Parentesco", selection: $newContact.parentesco) {
-                    ForEach(Parentesco.allCases, id: \.self) { parentesco in
-                        Text(parentesco.rawValue.capitalized).tag(parentesco)
+                HStack{
+                    Picker("Parentesco", selection: $newContact.parentesco) {
+                        ForEach(Parentesco.allCases, id: \.self) { parentesco in
+                            Text(parentesco.rawValue.capitalized).tag(parentesco)
+                        }
                     }
+                }
+                
+            }*/
+            
+            CardView {
+                VStack(alignment: .leading, spacing: 15) {
+                    Text("Parentesco")
+                        .font(.headline)
+                    Rectangle()
+                        .fill(Color.clear)
+                        .frame(height: 2)
+                        .overlay(
+                            Picker("Parentesco", selection: $newContact.parentesco) {
+                                ForEach(Parentesco.allCases, id: \.self) { parentesco in
+                                    Text(parentesco.rawValue.capitalized).tag(parentesco)
+                                }
+                            }
+                        )
                 }
             }
 
             CardView {
                 TextField("Email", text: emailContact)
-                    .textFieldStyle()
             }
 
             CardView {
                 TextField("Número de Teléfono", text: phoneNumberContact)
-                    .textFieldStyle()
             }
 
             CardView {
                 TextField("Dirección", text: direccionContact)
-                    .textFieldStyle()
             }
 
             CardView {
                 Toggle("Compartir Ubicación", isOn: compartirUbicacionContact)
+                    .bold()
             }
 
             Button("OK") {
@@ -112,9 +137,11 @@ struct AddContactPopup: View {
                     // Mostrar un mensaje de error
                 }
             }
-            .buttonStyle()
-            .padding(.top, 10)
-
+            .frame(width: 150, height: 50)
+            .background(Color.primaryButtonColor)
+            .foregroundColor(.white)
+            .cornerRadius(10)
+            .padding(.top, 20)
         }
         .padding()
     }

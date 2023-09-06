@@ -311,42 +311,15 @@ class HealthInfoViewModelTests: XCTestCase {
         super.tearDown()
     }
     
-    func testAreAllRequiredDiseasesInformed_WithAllRequired_ReturnsTrue() {
-        sut.diseases = [Disease(type: .diabetes), Disease(type: .hipertension)]
-        
-        XCTAssertTrue(sut.areAllRequiredDiseasesInformed())
-    }
-    
-    func testAreAllRequiredDiseasesInformed_WithoutAllRequired_ReturnsFalse() {
-        sut.diseases = [Disease(type: .diabetes)]
-        
-        XCTAssertFalse(sut.areAllRequiredDiseasesInformed())
-    }
-    
-    func testAreAllRequiredAllergiesInformed_WithRequired_ReturnsTrue() {
-        sut.allergiesMedicamentos = [.penicilina]
-        
-        XCTAssertTrue(sut.areAllRequiredAllergiesInformed())
-    }
-    
-    func testAreAllRequiredAllergiesInformed_WithoutRequired_ReturnsFalse() {
-        sut.allergiesMedicamentos = []
-        
-        XCTAssertFalse(sut.areAllRequiredAllergiesInformed())
-    }
-    
-    func testAreAllValidationsTrue_WithAllValid_ReturnsTrue() {
+
+    func testAreAllValidationsTrue_WithTrackingAllowed_ReturnsTrue() {
         sut.allowTracking = true
-        sut.diseases = [Disease(type: .diabetes), Disease(type: .hipertension)]
-        sut.allergiesMedicamentos = [.penicilina]
         
         XCTAssertTrue(sut.areAllValidationsTrue())
     }
     
-    func testAreAllValidationsTrue_WithInvalid_ReturnsFalse() {
-        sut.allowTracking = true
-        sut.diseases = [Disease(type: .diabetes)]
-        sut.allergiesMedicamentos = []
+    func testAreAllValidationsTrue_WithoutTrackingAllowed_ReturnsFalse() {
+        sut.allowTracking = false
         
         XCTAssertFalse(sut.areAllValidationsTrue())
     }

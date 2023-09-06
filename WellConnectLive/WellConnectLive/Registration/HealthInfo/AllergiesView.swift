@@ -10,7 +10,6 @@ import SwiftUI
 struct AllergiesSelectionView: View {
     @ObservedObject var viewModel: HealthInfoViewModel
     @Environment(\.presentationMode) var presentationMode
-
     
     var body: some View {
         NavigationView {
@@ -61,15 +60,28 @@ struct AllergiesSelectionView: View {
                         }
                     }
                     
+                    Section(header: Text("Añadir personalizado")) {
+                        TextField("Introduce tu alergia...", text: $viewModel.allergyDescription)
+                            .padding()
+                            .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 1))
+                            .background(Color.white)
+                            .cornerRadius(8)
+                    }
+                    
                     Button("OK") {
                         self.presentationMode.wrappedValue.dismiss()
                     }
                     .frame(maxWidth: .infinity, alignment: .center)
+                    .padding()
+                    .background(Color.primaryButtonColor)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
                 }
             }
-            .navigationBarTitle("Seleccionar Alergias", displayMode: .inline)
+            .navigationBarTitle("Selecciona tus alergias", displayMode: .inline)
+            .navigationBarItems(trailing: Button("Cerrar") {
+                self.presentationMode.wrappedValue.dismiss()
+            })
         }
     }
 }
-
-

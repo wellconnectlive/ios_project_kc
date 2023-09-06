@@ -15,43 +15,43 @@
  import FirebaseStorage
 
 protocol FirestoreManagerProtocol {
-    func saveAuthUser(authUser: AuthUser, completion: @escaping (Error?) -> Void)
-    func saveUserProfile(userProfile: UserProfile, completion: @escaping (Error?) -> Void)
-    func saveUserData(userData: UserData, completion: @escaping (Error?) -> Void)
-    func getUserProfile(by id: String, completion: @escaping (UserProfile?, Error?) -> Void)
-    func getUserData(by id: String, completion: @escaping (UserData?, Error?) -> Void)
-    func uploadImageAndSaveReference(userId: String, imageData: Data, completion: @escaping (Error?) -> Void)
+    //func saveAuthUser(authUser: AuthUser, completion: @escaping (Error?) -> Void)
+    //func saveUserProfile(userProfile: UserProfile, completion: @escaping (Error?) -> Void)
+    //func saveUserData(userData: UserData, completion: @escaping (Error?) -> Void)
+    //func getUserProfile(by id: String, completion: @escaping (UserProfile?, Error?) -> Void)
+    //func getUserData(by id: String, completion: @escaping (UserData?, Error?) -> Void)
+    //func uploadImageAndSaveReference(userId: String, imageData: Data, completion: @escaping (Error?) -> Void)
 }
 
 
 class FirestoreManager: FirestoreManagerProtocol {
-     private let db = Firestore.firestore()
-     private let storage = Storage.storage()
+    private let db = Firestore.firestore()
+    private let storage = Storage.storage()
 
-     init() {
-         // Mantener la inicialización de la persistencia local.
-         let settings = FirestoreSettings()
-         settings.isPersistenceEnabled = true
-         db.settings = settings
-     }
+    init() {
+     // Mantener la inicialización de la persistencia local.
+     let settings = FirestoreSettings()
+     settings.isPersistenceEnabled = true
+     db.settings = settings
+    }
 
-     // Guardar un usuario en Firestore directamente
-     func saveAuthUser(authUser: AuthUser, completion: @escaping (Error?) -> Void) {
-         let ref = db.collection("authUsers").document(authUser.id)
-         ref.setData(authUser.toDocumentData(), completion: completion)
-     }
+    // Guardar un usuario en Firestore directamente
+    func saveAuthUser(authUser: AuthUser, completion: @escaping (Error?) -> Void) {
+     let ref = db.collection("authUsers").document(authUser.id)
+     ref.setData(authUser.toDocumentData(), completion: completion)
+    }
 
-     // Guardar un perfil de usuario en Firestore directamente
-     func saveUserProfile(userProfile: UserProfile, completion: @escaping (Error?) -> Void) {
-         let ref = db.collection("userProfiles").document(userProfile.id)
-         ref.setData(userProfile.toDocumentData(), completion: completion)
-     }
+    // Guardar un perfil de usuario en Firestore directamente
+    func saveUserProfile(userProfile: UserProfile, completion: @escaping (Error?) -> Void) {
+     let ref = db.collection("userProfiles").document(userProfile.id)
+     ref.setData(userProfile.toDocumentData(), completion: completion)
+    }
 
-     // Guardar datos de usuario en Firestore directamente
-     func saveUserData(userData: UserData, completion: @escaping (Error?) -> Void) {
-         let ref = db.collection("userDatas").document(userData.id)
-         ref.setData(userData.toDocumentData(), completion: completion)
-     }
+    // Guardar datos de usuario en Firestore directamente
+    func saveUserData(userData: UserData, completion: @escaping (Error?) -> Void) {
+     let ref = db.collection("userDatas").document(userData.id)
+     ref.setData(userData.toDocumentData(), completion: completion)
+    }
  
     // Obtener un perfil de usuario por ID
     func getUserProfile(by id: String, completion: @escaping (UserProfile?, Error?) -> Void) {
@@ -105,7 +105,16 @@ class FirestoreManager: FirestoreManagerProtocol {
              }
          }
      }
- }
+    func updateContactsForUser(with id: String, contacts: [Contact], completion: @escaping (Error?) -> Void) {
+        let ref = db.collection("userDatas").document(id)
+        
+        // Aquí solo actualizamos el campo 'contacts' con el nuevo array de contactos.
+        let contactData = contacts.map { $0.toDocumentData() }
+        ref.updateData(["contacts": contactData], completion: completion)
+    }
+}
+
+
 //MOCK PARA EL TEST
 class FirestoreManagerMock: FirestoreManagerProtocol {
     var shouldReturnError: Bool = false

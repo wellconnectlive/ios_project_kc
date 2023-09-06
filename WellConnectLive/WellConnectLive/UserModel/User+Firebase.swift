@@ -196,7 +196,8 @@ extension TypeAlergies {
         return [
             "allergiesMedicamentos": allergiesMedicamentos?.map { $0.rawValue } ?? [],
             "allergiesAlimentacion": allergiesAlimentacion?.map { $0.rawValue } ?? [],
-            "allergiesOtros": allergiesOtros?.map { $0.rawValue } ?? []
+            "allergiesOtros": allergiesOtros?.map { $0.rawValue } ?? [],
+            "allergyDescription" : allergyDescription ?? ""
         ]
     }
 
@@ -211,6 +212,7 @@ extension TypeAlergies {
         if let otrosArray = documentData["allergiesOtros"] as? [String] {
             self.allergiesOtros = otrosArray.compactMap { AllergyOtros(rawValue: $0) }
         }
+        self.allergyDescription = documentData["allergyDescription"] as? String
     }
 
 }

@@ -34,24 +34,29 @@ class ProfileViewModel: ObservableObject {
     }
     
     func isNameValid(name: String) -> Bool {
+        guard !name.isEmpty else { return true }
         let nameCharacterSet = CharacterSet.letters
         return !name.trimmingCharacters(in: nameCharacterSet).isEmpty
     }
 
     func isPhoneNumberValid(phoneNumber: String) -> Bool {
+        guard !phoneNumber.isEmpty else { return true }
         let phoneNumberCharacterSet = CharacterSet.decimalDigits
         return !phoneNumber.trimmingCharacters(in: phoneNumberCharacterSet).isEmpty
     }
 
     func isDniValid(dni: String) -> Bool {
+        guard !dni.isEmpty else { return true }
         let dniCharacterSet = CharacterSet.alphanumerics
         return !dni.trimmingCharacters(in: dniCharacterSet).isEmpty
     }
 
     func isNumberValid(number: String) -> Bool {
+        guard !number.isEmpty else { return true }
         let numberCharacterSet = CharacterSet.decimalDigits
         return !number.trimmingCharacters(in: numberCharacterSet).isEmpty
     }
+
     //una funcion que muestra si son true o false, mas tarde al guardar se verifica si esta funcion es true completa o hay algun false
     func areAllFieldsValid() -> Bool {
         return isNameValid(name: name) &&

@@ -4,51 +4,73 @@
 //
 //  Created by Markel Juaristi on 14/8/23.
 //
-
 import SwiftUI
 
 struct HealthInfoView: View {
     @ObservedObject var viewModel: HealthInfoViewModel
+    @EnvironmentObject var appState: AppState
     @State private var showAllergiesPopup = false
     @State private var otherDiseaseText: String = ""
     @State private var showOtherDiseasePopup = false
     @State private var showNextScreen = false
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: 10) {
-                Text("Cuéntanos un poco sobre ti")
-                    .font(.title)
-                    .padding(.bottom, 20)
-                trackingSection
-                generalHealthSection
-                allergiesSection
-                otherDiseaseSection
-                
-                Button("Siguiente") {
-                    viewModel.saveHealthInfo()
-                    showNextScreen = true
-                }
-                .padding(.top, 20)
+        ZStack {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 5) {
+                    HStack {
+                        Button(action: {
+                            appState.navigationState = .profile // Cambia esto al estado de navegación que desees
+                        }) {
+                            Image(systemName: "arrow.left")
+                                .foregroundColor(Color.primaryButtonColor)
+                                .padding()
+                        }
+                        Spacer()
+                    }
+                    
+                    RegisterProgressView(currentStep: .healthInfo)
+                        .frame(width: 350, height: 60)
+                        .padding()
 
+                    
+                    Text("Cuéntanos un poco sobre ti")
+                        .font(.custom("Inter", size: 40))
+                        .foregroundColor(Color.secondaryButtonColor)
+                        .padding(.leading, 20)
+                    Text("Selecciona la situación que más se ajuste a ti")
+                        .font(.subheadline)
+                        .foregroundColor(Color.secondaryButtonColor)
+                        .padding(.leading, 20)
+
+                }
+                .padding(.top, 10)
+                VStack(spacing: 10) {
+                    trackingSection
+                    generalHealthSection
+                    allergiesSection
+                    otherDiseaseSection
+                    nextButtonSection
+                }
+                .padding()
             }
-            .padding()
         }
         .sheet(isPresented: $showOtherDiseasePopup) {
-            OtherDiseasePopupView(otherDiseaseText: $otherDiseaseText)
+            OtherDiseasePopupView(otherDiseaseText: $otherDiseaseText) { addedDisease in
+                let diseaseModel = Disease(type: .other, name: addedDisease)
+                viewModel.diseases.append(diseaseModel)
+            }
         }
     }
     
     var trackingSection: some View {
         CardView {
-            //ya que lo tenemos como opcional; podemos usar guard o if let, pero para un toggle no es la forma mas directa o recomendable, segun youtube
             Toggle(isOn: Binding<Bool>(
                 get: { self.viewModel.userData.allowTracking ?? false },
                 set: { self.viewModel.userData.allowTracking = $0 }
             )) {
                 Text("Permitir seguimiento")
             }
-
         }
     }
     
@@ -89,21 +111,46 @@ struct HealthInfoView: View {
     
     var otherDiseaseSection: some View {
         CardView {
-            VStack(spacing: 5) {
+            VStack(alignment: .leading, spacing: 15) {
                 Text("Otras enfermedades")
                     .font(.headline)
-                Button("Añadir enfermedad") {
-                    showOtherDiseasePopup = true
-                }
+                
+               
+
+                Rectangle()
+                    .fill(Color.clear)
+                    .frame(height: 45)
+                    .overlay(
+                        Button("Añadir enfermedad") {
+                            showOtherDiseasePopup = true
+                        }
+                        
+                        .padding()
+                        .foregroundColor(Color.primaryButtonColor)
+                    )
             }
         }
     }
-}
 
+
+    private var nextButtonSection: some View {
+        Button(action: {
+            viewModel.saveHealthInfo()
+            showNextScreen = true
+        }) {
+            Text("Siguiente")
+                .frame(width: 200, height: 50)
+                .background(Color.primaryButtonColor)
+                .foregroundColor(.white)
+                .cornerRadius(10)
+        }
+        .padding(.top, 20)
+    }
+}
 
 struct HealthInfoView_Previews: PreviewProvider {
     static var previews: some View {
         let appState = AppState()
-        HealthInfoView(viewModel: HealthInfoViewModel(appState: appState))
+        return HealthInfoView(viewModel: HealthInfoViewModel(appState: appState)).environmentObject(appState)
     }
 }

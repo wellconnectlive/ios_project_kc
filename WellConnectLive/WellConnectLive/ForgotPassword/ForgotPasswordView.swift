@@ -11,52 +11,70 @@ struct ForgotPasswordView: View {
     @ObservedObject var viewModel: ForgotPasswordViewModel = ForgotPasswordViewModel()
 
     var body: some View {
-            ZStack {
-                LinearGradient(gradient: Gradient(colors: [Color(red: 0/255, green: 209/255, blue: 255/255), Color.white]), startPoint: .top, endPoint: .bottom)
-                    .edgesIgnoringSafeArea(.all)
+        ZStack {
+            Color.white.edgesIgnoringSafeArea(.all)
 
-                VStack {
-                    Text("Recuperar contraseña")
-                        .font(.largeTitle)
-                        .foregroundColor(Color.orange)
-                        .fontWeight(.bold)
+            VStack(spacing: 20) {
+                HStack {
+                    Button(action: {
+                        // Navegar de regreso al login
+                        appState.navigationState = .login
+                    }) {
+                        Image(systemName: "arrow.left")
+                            .foregroundColor(Color.primaryButtonColor)
+                            .padding()
+                    }
                     Spacer()
-                    
+                }
+
+                Spacer(minLength: 40) // Espaciado para centrar el título un poco más abajo
+
+                Text("Cambiar la contraseña")
+                    .font(.custom("Inter", size: 50))
+                    .foregroundColor(Color.secondaryButtonColor)
+                    .fontWeight(.bold)
+                    .frame(maxWidth: .infinity, alignment: .center)
+                Spacer()
+
+                CardView {
                     TextField("Email", text: $viewModel.email)
                         .keyboardType(.emailAddress)
                         .textContentType(.emailAddress)
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
                         .padding()
-                        .background(Color.gray.opacity(0.2))
-                        .cornerRadius(10)
-                        .padding(.top, 10)
-
-                    if let error = viewModel.error {
-                        Text(error)
-                            .foregroundColor(.red)
-                    }
-                    //si el campo email est´vacio estara gris y si se rellena naranja y se podrá enviar
-                    /* falta añadir verificador de email ya creado en login y */
-                    Button(action: viewModel.sendPasswordReset) {
-                        Text("Enviar email de restablecimiento de contraseña")
-                            .frame(width: 200, height: 50)
-                            .background(viewModel.email.isEmpty ? Color.gray : Color.orange)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
-                            .padding(.top, 90)
-                    }
-                    .disabled(viewModel.email.isEmpty)
-
-                    if viewModel.passwordResetSent {
-                        Text("¡Email de restablecimiento de contraseña enviado!")
-                            .foregroundColor(.green)
-                    }
-                    Spacer()
+                        /*.overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.gray.opacity(0.5), lineWidth: 1)
+                        )*/
                 }
-                .padding()
+                .padding(.top, 40)
+
+                if let error = viewModel.error {
+                    Text(error)
+                        .foregroundColor(.red)
+                }
+
+                Button(action: viewModel.sendPasswordReset) {
+                    Text("Enviar email")
+                        .frame(width: 200, height: 50)
+                        .background(viewModel.email.isEmpty ? Color.gray : Color.orange)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
+                .disabled(viewModel.email.isEmpty)
+                .padding(.top, 30)
+
+                if viewModel.passwordResetSent {
+                    Text("¡Email de restablecimiento de contraseña enviado!")
+                        .foregroundColor(.green)
+                }
+                
+                Spacer()
             }
+            .padding()
         }
+    }
 }
 
 struct ForgotPasswordView_Previews: PreviewProvider {

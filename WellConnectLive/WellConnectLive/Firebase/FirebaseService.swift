@@ -16,6 +16,7 @@ enum FirebaseAuthResult {
 //implementamos el protocolo para mockear una clase para los tests.
 protocol AuthService {
     func registerUser(email: String, password: String, completion: @escaping (FirebaseAuthResult) -> Void)
+    func loginUser(email: String, password: String, completion: @escaping (FirebaseAuthResult) -> Void)
 }
 
 
@@ -40,11 +41,37 @@ class FirebaseAuthService: AuthService {
             }
         }
     }
+    
+    func loginUser(email: String, password: String, completion: @escaping (FirebaseAuthResult) -> Void) {
+            Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
+                if let error = error {
+                    completion(.failure(error))
+                    return
+                }
+                
+                if let authResult = authResult {
+                    let user = AuthUser(id: authResult.user.uid, email: authResult.user.email ?? "")
+                    self.appState.userId = authResult.user.uid
+                    completion(.success(user))
+                }
+            }
+        }
 }
 
 
 
 class MockAuthService: AuthService {
+    func loginUser(email: String, password: String, completion: @escaping (FirebaseAuthResult) -> Void) {
+        if shouldReturnError {
+            let error = NSError(domain: "", code: 1000, userInfo: [NSLocalizedDescriptionKey: "Mock login error"])
+            completion(.failure(error))
+            return
+        }
+        
+        let mockUser = AuthUser(id: "mockLoginUserID", email: email)
+        completion(.success(mockUser))
+    }
+    
     
     // Una variable para controlar el comportamiento del mock
     var shouldReturnError: Bool = false

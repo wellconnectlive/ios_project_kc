@@ -4,7 +4,6 @@
 //
 //  Created by Markel Juaristi on 26/7/23.
 //
-
 import SwiftUI
 
 struct LoginView: View {
@@ -12,85 +11,91 @@ struct LoginView: View {
     @EnvironmentObject var appState: AppState
     
     init(appState: AppState) {
-            self.viewModel = LoginViewModel(appState: appState)
-        }
+        self.viewModel = LoginViewModel(appState: appState)
+    }
 
     var body: some View {
         ZStack {
-            //LinearGradient(gradient: Gradient(colors: [Color(red: 0/255, green: 209/255, blue: 255/255), Color.white]), startPoint: .top, endPoint: .bottom)
-                //.edgesIgnoringSafeArea(.all)
+            Color.white.edgesIgnoringSafeArea(.all)
             
-            VStack {
-                /* Aqui se debe indicar el logo final*/
-                Text("WELLCONNECT")
-                    .font(.largeTitle)
-                    .foregroundColor(Color.orange)
+            VStack(spacing: 20) {
+                ZStack {
+                    Color.primaryButtonColor
+                        .frame(maxHeight: UIScreen.main.bounds.height / 2.5)
+                        .edgesIgnoringSafeArea([.top, .leading, .trailing])
+                    
+                    Image("LogoApp")
+                        .resizable()
+                        .scaledToFit()
+                        .padding(20)
+                }
+                
+                Text("Bienvenido")
+                    .font(.custom("Inter", size: 20))
+                    .foregroundColor(Color.secondaryButtonColor)
                     .fontWeight(.bold)
-                Spacer()
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.leading)
                 
-                TextField("Usuario", text: $viewModel.username)
-                    .padding()
-                    .background(Color.gray.opacity(0.2))
-                    .cornerRadius(10)
-                    .padding(.top, 10)
+                CardView {
+                    TextField("Email ", text: $viewModel.username)
+                }
                 
-                SecureField("Contraseña", text: $viewModel.password)
-                    .padding()
-                    .background(Color.gray.opacity(0.2))
-                    .cornerRadius(10)
-                    .padding(.top, 10)
+                CardView {
+                    SecureField("Contraseña", text: $viewModel.password)
+                }
                 
-                Button(action: viewModel.loginUserPrueba) {
-                    Text("Entrar")
-                        .frame(width: 200, height: 50)
-                        //.background(Color.orange)
+                HStack {
+                    Button(action: { appState.navigationState = .forgotPassword }, label: {
+                        Text("¿Olvidó la contraseña?")
+                            .underline()
+                            .foregroundColor(Color.secondaryButtonColor)
+                            .padding(.leading)
+                    })
+                    Spacer()
+                }
+                
+                Button(action: viewModel.loginUser) {
+                    Text("Iniciar")
+                        .frame(maxWidth: 320)
+                        .frame(height: 50)
                         .background(Color.primaryButtonColor)
                         .foregroundColor(.white)
                         .cornerRadius(10)
-                        .padding(.top, 90)
                 }
+                .padding(.top, 20)
                 
                 if viewModel.isLoading {
                     ProgressView()
                 }
-                
+
                 if !viewModel.errorMessage.isEmpty {
                     Text(viewModel.errorMessage)
                         .foregroundColor(.red)
                 }
-                
-                HStack {
-                    Text("¿No tienes una cuenta?")
-                    
-                    Button(action: {appState.navigationState = .register}, label: {
-                        Text("Registrarse")
+
+                HStack(spacing: 5) {
+                    Text("¿No eres miembro?")
+                        .foregroundColor(Color.black)
+                        
+                    Button(action: { appState.navigationState = .register }, label: {
+                        Text("Regístrate ahora")
                             .underline()
+                            .foregroundColor(Color.primaryButtonColor)
+                            .bold()
                     })
                 }
-                .padding(.top, 10)
-                
-                Button(action: {appState.navigationState = .forgotPassword}, label: {
-                    Text("¿Olvidaste tu contraseña?")
-                        .underline()
-                })
-                .padding(.top, 10)
-
-                
-                Spacer()
             }
             .padding()
-            
         }
     }
 }
 
-
-
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         let appState = AppState()
-                LoginView(appState: appState).environmentObject(appState)
-        
+        return LoginView(appState: appState).environmentObject(appState)
     }
 }
+
 

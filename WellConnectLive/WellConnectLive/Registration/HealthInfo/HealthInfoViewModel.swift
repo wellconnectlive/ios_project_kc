@@ -16,7 +16,8 @@ class HealthInfoViewModel: ObservableObject {
     @Published var allergiesMedicamentos: [AllergyMedicamentos] = []
     @Published var allergiesAlimentacion: [AllergyAlimentacion] = []
     @Published var allergiesOtros: [AllergyOtros] = []
-    
+    @Published var allergyDescription: String = ""
+
     var appState: AppState
         
     init(appState: AppState) {
@@ -28,6 +29,7 @@ class HealthInfoViewModel: ObservableObject {
         count += allergiesMedicamentos.count
         count += allergiesAlimentacion.count
         count += allergiesOtros.count
+        if !allergyDescription.isEmpty { count += 1 }
         return count
     }
     
@@ -35,31 +37,9 @@ class HealthInfoViewModel: ObservableObject {
         return allowTracking
     }
 
-    func areAllRequiredDiseasesInformed() -> Bool {
-        let requiredDiseases: [Disease.DiseaseType] = [.diabetes, .hipertension]
-        for requiredDisease in requiredDiseases {
-            if !diseases.contains(where: { $0.type == requiredDisease }) {
-                return false
-            }
-        }
-        return true
-    }
-
-    func areAllRequiredAllergiesInformed() -> Bool {
-        let requiredAllergies: [AllergyMedicamentos] = [.penicilina]
-        for requiredAllergy in requiredAllergies {
-            if !allergiesMedicamentos.contains(requiredAllergy) {
-                return false
-            }
-        }
-        return true
-    }
-
     // Función que muestra si todas las validaciones son true o hay algún false
     func areAllValidationsTrue() -> Bool {
-        return isTrackingAllowed() &&
-               areAllRequiredDiseasesInformed() &&
-               areAllRequiredAllergiesInformed()
+        return isTrackingAllowed()
     }
     
     func saveHealthInfo() {
@@ -73,12 +53,10 @@ class HealthInfoViewModel: ObservableObject {
             return
         }
         
-        // Actualiza userData con los valores actuales
         userData.id = userId
         userData.allowTracking = allowTracking
         userData.diseases = diseases
-        userData.allergies = TypeAlergies(allergiesMedicamentos: allergiesMedicamentos, allergiesAlimentacion: allergiesAlimentacion, allergiesOtros: allergiesOtros)
-
+        userData.allergies = TypeAlergies(allergiesMedicamentos: allergiesMedicamentos, allergiesAlimentacion: allergiesAlimentacion, allergiesOtros: allergiesOtros, allergyDescription:  allergyDescription)
 
         // Guarda userData en Firestore
         FirestoreManager().saveUserData(userData: self.userData) { error in
@@ -94,6 +72,5 @@ class HealthInfoViewModel: ObservableObject {
             }
         }
     }
-    
-    
 }
+

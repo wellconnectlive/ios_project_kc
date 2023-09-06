@@ -8,7 +8,6 @@
 import Foundation
 import SwiftUI
 
-
 class CircleOfTrustViewModel: ObservableObject {
     @Published var contacts: [Contact] = []
     
@@ -18,46 +17,37 @@ class CircleOfTrustViewModel: ObservableObject {
     init(appState: AppState) {
         self.appState = appState
     }
-    
+
     func addOrUpdateContact(_ contact: Contact) {
         if let index = contacts.firstIndex(where: { $0.id == contact.id }) {
-            // Si el contacto ya existe--actualizar
             contacts[index] = contact
         } else {
-            // Si el contacto no existe---agregar
             contacts.append(contact)
         }
     }
-    
+
+    func deleteContact(at offsets: IndexSet) {
+        contacts.remove(atOffsets: offsets)
+        // Opcionalmente, puedes llamar a updateContactsAndSaveUserData() aquí para guardar cambios de inmediato
+    }
+
     func updateContactsAndSaveUserData() {
         guard let userId = appState.userId else {
             print("Error: userId is nil")
             return
         }
 
-        firestoreManager.getUserData(by: userId) { userData, error in
+        firestoreManager.updateContactsForUser(with: userId, contacts: contacts) { error in
             if let error = error {
-                print("Error al obtener UserData: \(error)")
-                return
-            }
-
-            guard var userData = userData else {
-                print("Error: userData is nil")
-                return
-            }
-
-            userData.contacts = self.contacts
-
-            self.firestoreManager.saveUserData(userData: userData) { error in
-                if let error = error {
-                    print("Error al guardar UserData: \(error)")
-                } else {
-                    print("UserData guardado correctamente")
-                }
+                print("Error al actualizar contactos en Firestore:", error.localizedDescription)
+            } else {
+                print("Contactos actualizados con éxito en Firestore.")
             }
         }
     }
-
-
+    func deleteContact(_ contact: Contact) {
+        if let index = contacts.firstIndex(where: { $0.id == contact.id }) {
+            contacts.remove(at: index)
+        }
+    }
 }
-

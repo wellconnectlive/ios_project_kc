@@ -21,10 +21,15 @@ struct CardView<Content: View>: View {
         .padding()
         .background(Color.white.opacity(0.3))
         .cornerRadius(10)
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(Color.primaryButtonColor, lineWidth: 1)
+        )
         .shadow(color: Color.gray.opacity(0.2), radius: 5, x: 0, y: 2)
-        .padding([.leading, .trailing], 10)  
+        .padding([.leading, .trailing], 10)
     }
 }
+
 
 /*
 struct CardView_Previews: PreviewProvider {
@@ -32,4 +37,5 @@ struct CardView_Previews: PreviewProvider {
         CardView()
     }
 }
+
 */
