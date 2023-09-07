@@ -36,7 +36,7 @@ struct PrivacyPolicyView: View {
                             isShown = false
                         }
                         .padding()
-                        .background(Color.blue.opacity(0.7))
+                        .background(Color.primaryButtonColor)
                         .foregroundColor(.white)
                         .cornerRadius(10)
                         
@@ -46,11 +46,11 @@ struct PrivacyPolicyView: View {
                             if isPrivacyAccepted && isDataSharingAccepted {
                                 isShown = false
                             } else {
-                                // Mostrar un mensaje de error
+                                //mostrar mensaje de alerta
                             }
                         }
                         .padding()
-                        .background(Color.blue)
+                        .background(Color.secondaryButtonColor)
                         .foregroundColor(.white)
                         .cornerRadius(10)
                         

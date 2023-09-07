@@ -15,6 +15,8 @@ class RegistrationViewModel: ObservableObject {
     @Published var errorMessage = ""
     @Published var isPrivacyAccepted = false
     @Published var isDataSharingAccepted = false
+    
+    
 
     var appState: AppState
     var authService: AuthService

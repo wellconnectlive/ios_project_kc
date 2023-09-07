@@ -122,14 +122,19 @@ struct ActionsSection: View {
 
     var body: some View {
         Group {
-            TermsButton(showingTermsAlert: $showingTermsAlert)
+            TermsButton(showingTermsAlert: $showingTermsAlert,
+                        isPrivacyAccepted: $viewModel.isPrivacyAccepted,
+                        isDataSharingAccepted: $viewModel.isDataSharingAccepted)
             RegisterButton(action: viewModel.registerUser)
         }
     }
 }
 
+
 struct TermsButton: View {
     @Binding var showingTermsAlert: Bool
+    @Binding var isPrivacyAccepted: Bool
+    @Binding var isDataSharingAccepted: Bool
 
     var body: some View {
         Button(action: { showingTermsAlert = true }) {
@@ -141,8 +146,19 @@ struct TermsButton: View {
                 .font(.caption)
                 .fontWeight(.bold)
         }
+        .sheet(isPresented: $showingTermsAlert) {
+            PrivacyPolicyView(isShown: $showingTermsAlert,
+                              isPrivacyAccepted: $isPrivacyAccepted,
+                              isDataSharingAccepted: $isDataSharingAccepted)
+        }
+
+        
+        
+        
     }
 }
+
+
 
 struct RegisterButton: View {
     var action: () -> Void
