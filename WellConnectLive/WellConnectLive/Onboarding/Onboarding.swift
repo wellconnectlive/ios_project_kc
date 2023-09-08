@@ -12,8 +12,8 @@ struct Onboarding: View {
     
     @EnvironmentObject var appState: AppState
     
-//    @AppStorage ("pageIndex") private var pageIndex = 0
-    @State private var pageIndex = 0
+    @AppStorage ("pageIndex") private var pageIndex = 0
+    //@State private var pageIndex = 0
     
     private let pages: [Page] = Page.samplesPages
     private let dotAppearance = UIPageControl.appearance()
@@ -87,6 +87,7 @@ struct Onboarding: View {
     func goToLogin(){
         //Mover a la pantalla de login
         self.appState.navigationState = .login
+        pageIndex+=1
     }
 }
 

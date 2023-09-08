@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08780C8E2AAAD219009023C5 /* PrincipalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08780C8D2AAAD219009023C5 /* PrincipalView.swift */; };
+		08780C922AAAD28F009023C5 /* QRGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08780C912AAAD28F009023C5 /* QRGenerator.swift */; };
 		D33476422A76E1A300F43EE7 /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33476412A76E1A300F43EE7 /* InformationView.swift */; };
 		D33476432A76E1A300F43EE7 /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33476412A76E1A300F43EE7 /* InformationView.swift */; };
 		D33476442A76E1A300F43EE7 /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33476412A76E1A300F43EE7 /* InformationView.swift */; };
@@ -178,6 +180,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		08780C8D2AAAD219009023C5 /* PrincipalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrincipalView.swift; sourceTree = "<group>"; };
+		08780C912AAAD28F009023C5 /* QRGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRGenerator.swift; sourceTree = "<group>"; };
 		D33476412A76E1A300F43EE7 /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationView.swift; sourceTree = "<group>"; };
 		D33476452A76E33900F43EE7 /* InformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewModel.swift; sourceTree = "<group>"; };
 		D36DE3F72A9369580046E2B1 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
@@ -283,6 +287,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08780C8A2AAAD1FF009023C5 /* Principal */ = {
+			isa = PBXGroup;
+			children = (
+				08780C8D2AAAD219009023C5 /* PrincipalView.swift */,
+				08780C8C2AAAD20B009023C5 /* QR */,
+			);
+			path = Principal;
+			sourceTree = "<group>";
+		};
+		08780C8C2AAAD20B009023C5 /* QR */ = {
+			isa = PBXGroup;
+			children = (
+				08780C912AAAD28F009023C5 /* QRGenerator.swift */,
+			);
+			path = QR;
+			sourceTree = "<group>";
+		};
 		D380FC282AA09EDC0057104B /* OtherDisease */ = {
 			isa = PBXGroup;
 			children = (
@@ -470,6 +491,7 @@
 		D3CB90792A76D1CA0047BE0E /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				08780C8A2AAAD1FF009023C5 /* Principal */,
 				D3CB907A2A76D1E10047BE0E /* HomeView.swift */,
 				D3CB907E2A76D2050047BE0E /* HomeViewModel.swift */,
 			);
@@ -717,6 +739,7 @@
 				D3CB907B2A76D1E10047BE0E /* HomeView.swift in Sources */,
 				D399CAD02A77AAF2008EE45C /* ForgotPasswordView.swift in Sources */,
 				D3CB90372A7125400047BE0E /* RegistrationView.swift in Sources */,
+				08780C8E2AAAD219009023C5 /* PrincipalView.swift in Sources */,
 				D3DD3E802A88EBD400758066 /* ImagePicker.swift in Sources */,
 				D33476462A76E33900F43EE7 /* InformationViewModel.swift in Sources */,
 				D3DD3E942A8A8A6000758066 /* OtherDisease.swift in Sources */,
@@ -728,6 +751,7 @@
 				D3CB902E2A7125010047BE0E /* LoginViewModel.swift in Sources */,
 				D399CAD42A77AB72008EE45C /* ForgotPasswordViewModel.swift in Sources */,
 				D3CB90682A73CF720047BE0E /* User+Firebase.swift in Sources */,
+				08780C922AAAD28F009023C5 /* QRGenerator.swift in Sources */,
 				D3CB8FFE2A7124AE0047BE0E /* WellConnectLiveApp.swift in Sources */,
 				D3CB90492A7125C80047BE0E /* UserModel.swift in Sources */,
 			);
