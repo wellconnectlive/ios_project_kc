@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		08780C8E2AAAD219009023C5 /* PrincipalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08780C8D2AAAD219009023C5 /* PrincipalView.swift */; };
 		08780C922AAAD28F009023C5 /* QRGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08780C912AAAD28F009023C5 /* QRGenerator.swift */; };
+		08ED4DBD2AAC411300721040 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08ED4DBC2AAC411300721040 /* MapViewModel.swift */; };
+		08ED4DBF2AAC412900721040 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08ED4DBE2AAC412900721040 /* MapView.swift */; };
 		D33476422A76E1A300F43EE7 /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33476412A76E1A300F43EE7 /* InformationView.swift */; };
 		D33476432A76E1A300F43EE7 /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33476412A76E1A300F43EE7 /* InformationView.swift */; };
 		D33476442A76E1A300F43EE7 /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33476412A76E1A300F43EE7 /* InformationView.swift */; };
@@ -182,6 +184,9 @@
 /* Begin PBXFileReference section */
 		08780C8D2AAAD219009023C5 /* PrincipalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrincipalView.swift; sourceTree = "<group>"; };
 		08780C912AAAD28F009023C5 /* QRGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRGenerator.swift; sourceTree = "<group>"; };
+		08ED4DBC2AAC411300721040 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		08ED4DBE2AAC412900721040 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		08ED4DC02AAC429B00721040 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D33476412A76E1A300F43EE7 /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationView.swift; sourceTree = "<group>"; };
 		D33476452A76E33900F43EE7 /* InformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewModel.swift; sourceTree = "<group>"; };
 		D36DE3F72A9369580046E2B1 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
@@ -304,6 +309,15 @@
 			path = QR;
 			sourceTree = "<group>";
 		};
+		08ED4DBB2AAC40A900721040 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				08ED4DBC2AAC411300721040 /* MapViewModel.swift */,
+				08ED4DBE2AAC412900721040 /* MapView.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		D380FC282AA09EDC0057104B /* OtherDisease */ = {
 			isa = PBXGroup;
 			children = (
@@ -371,6 +385,7 @@
 		D3CB8FFC2A7124AE0047BE0E /* WellConnectLive */ = {
 			isa = PBXGroup;
 			children = (
+				08ED4DC02AAC429B00721040 /* Info.plist */,
 				D3B7012D2AA7C78F00FD2F7B /* RegisterProgressView.swift */,
 				D3DD3EA42A8B913700758066 /* Styles.swift */,
 				D3DD3E832A8A490E00758066 /* CardDesignView.swift */,
@@ -491,6 +506,7 @@
 		D3CB90792A76D1CA0047BE0E /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				08ED4DBB2AAC40A900721040 /* Map */,
 				08780C8A2AAAD1FF009023C5 /* Principal */,
 				D3CB907A2A76D1E10047BE0E /* HomeView.swift */,
 				D3CB907E2A76D2050047BE0E /* HomeViewModel.swift */,
@@ -719,6 +735,7 @@
 				D3CB906D2A75138D0047BE0E /* FirebaseService.swift in Sources */,
 				D380FC2A2AA09F8D0057104B /* OtherDiseaseViewModel.swift in Sources */,
 				D3DD3E6E2A84E85300758066 /* VerificationEmailViewModel.swift in Sources */,
+				08ED4DBF2AAC412900721040 /* MapView.swift in Sources */,
 				D3CB90002A7124AE0047BE0E /* ContentView.swift in Sources */,
 				D33476422A76E1A300F43EE7 /* InformationView.swift in Sources */,
 				D3B7012E2AA7C78F00FD2F7B /* RegisterProgressView.swift in Sources */,
@@ -736,6 +753,7 @@
 				D3DD3E772A87918500758066 /* ProfileInformation.swift in Sources */,
 				D3CB90442A7125A40047BE0E /* MainStateNavigation.swift in Sources */,
 				D3B701252AA5CBB700FD2F7B /* OnBoarding.swift in Sources */,
+				08ED4DBD2AAC411300721040 /* MapViewModel.swift in Sources */,
 				D3CB907B2A76D1E10047BE0E /* HomeView.swift in Sources */,
 				D399CAD02A77AAF2008EE45C /* ForgotPasswordView.swift in Sources */,
 				D3CB90372A7125400047BE0E /* RegistrationView.swift in Sources */,
@@ -991,6 +1009,7 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WellConnectLive/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1020,6 +1039,7 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WellConnectLive/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

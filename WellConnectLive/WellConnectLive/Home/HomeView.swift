@@ -29,16 +29,17 @@ struct HomeView: View {
                         Image(systemName: "house")
                     }.tag(0)
                 
-                
-                Text("Pantalla2")
+                MapView()
                     .tabItem {
                         Image(systemName: "map")
                     }.tag(1)
-                Text("Pantalla3")
+                
+                Text("Pantalla en proceso de construcción...")
                     .tabItem {
                         Image(systemName: "calendar.badge.plus")
                     }.tag(2)
-                Text("Pantalla4")
+                
+                Text("Pantalla en proceso de construcción...")
                     .tabItem {
                         Image(systemName: "camera.fill.badge.ellipsis")
                     }.tag(3)
